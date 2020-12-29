@@ -1,13 +1,114 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.jumbotron {
+    width: 30wh;
+    height: 20vh;
+    color: #fff;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    -webkit-animation: Gradient 15s ease infinite;
+    -moz-animation: Gradient 15s ease infinite;
+    animation: Gradient 15s ease infinite;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@media (max-width: 1000px){
+.mediaQuery{
+    font-size: 0.7em; 
 }
+}
+
+
+.slider img {
+    height: 65vh;
+    width: 20vw;
+    object-fit: cover;
+}
+@-webkit-keyframes Gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+ 
+@-moz-keyframes Gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+ 
+@keyframes Gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+} 
+
+
+
+
+#div_1_mol_1 {
+    position: absolute;
+    top: 80%;
+    left: 10%;
+    width: 60px;
+    height: 40px;
+    animation-fill-mode: forwards;
+    animation-name: div1;
+    animation-duration: 15s;
+    animation-delay: 2s;
+}
+
+@keyframes div1 {
+    from {
+        top: 80%;
+        transform: rotate(360deg);
+      }
+      to {
+        top: 10%;
+      }
+  }
+
+#molecule_1 {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    left: 0%;
+    animation-fill-mode: forwards;
+    animation-name: mol_1;
+    animation-duration: 14s;
+    animation-delay: 20s;
+    opacity: 1;
+  }
+  @keyframes mol_1 {
+    from {
+      top: 10%;
+      left: 0%;
+      transform: rotate(-360deg);
+      width: 100%;
+      height: 100%;
+      opacity: 1;
+    }
+    to {
+      top: 700%;
+      left: 800%;
+      width: 150%;
+      height: 150%;
+      opacity: 0.4;
+      color: blue;
+    }
+  } 
+
