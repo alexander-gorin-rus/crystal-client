@@ -1,7 +1,5 @@
 import React from 'react'
-import { Select } from 'antd';
 
-const { Option } = Select;
 
 const HomeUpdateForm = ({
     handleChange,
@@ -12,6 +10,7 @@ const HomeUpdateForm = ({
     const {
         title,
         info,
+        fullInfo,
         address,
         phone,
         email,
@@ -22,6 +21,7 @@ const HomeUpdateForm = ({
         <form onSubmit={handleSubmit}>
 
             <div className="form-group">
+                <label className="text-center text-primary">Название компании</label>
                 <input
                     type="text"
                     name="title"
@@ -33,17 +33,32 @@ const HomeUpdateForm = ({
             </div>
 
             <div className="form-group">
+                <label className="text-center text-primary">Текст для бегущей строки</label>
                 <input
                     type="textarea"
                     name="info"
                     className="form-control"
                     value={info}
                     onChange={handleChange}
-                    placeholder="Текст о компании"
+                    placeholder="Текст для бегущей строки"
                 />
             </div>
 
             <div className="form-group">
+                <label className="text-center text-primary"> текст о компании</label>
+                <input
+                    type="textarea"
+                    name="fullInfo"
+                    className="form-control"
+                    value={fullInfo}
+                    onChange={handleChange}
+                    placeholder="Полный текст о компании"
+                />
+            </div>
+
+
+            <div className="form-group">
+                <label className="text-center text-primary">Адрес</label>
                 <input
                     type="text"
                     name="address"
@@ -55,6 +70,7 @@ const HomeUpdateForm = ({
             </div>
 
             <div className="form-group">
+                <label className="text-center text-primary">Телефон</label>
                 <input
                     type="text"
                     name="phone"
@@ -66,13 +82,14 @@ const HomeUpdateForm = ({
             </div>
 
             <div className="form-group">
+                <label className="text-center text-primary">Email</label>
                 <input
                     type="email"
                     name="email"
                     className="form-control"
                     value={email}
                     onChange={handleChange}
-                    placeholder="Объём"
+                    placeholder="Email"
                 />
             </div>
 

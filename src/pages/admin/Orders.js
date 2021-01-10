@@ -2,11 +2,11 @@ import React from 'react';
 //import { CheckCircleOulined, CloseCircleFilled } from '@ant-design/icons';
 import ShowPaymentInfo from '../user/ShowPaymentInfo';
 
-const Orders = ({ orders, handleStatusChange }) => {
+const Orders = ({ orders, handleStatusChange, deleteOrder }) => {
 
     const showOrdersInTable = (order) => {
         return (
-            <table className="table table-bordered">
+            <table className="table table-bordered" style={{ width: "100vw" }}>
                 <thead className="thead-light">
                     <tr>
                         <th scope="col">Название товара</th>
@@ -35,6 +35,7 @@ const Orders = ({ orders, handleStatusChange }) => {
         <>
             {orders.map((order) => (
                 <div key={order._id} className="row pb-5">
+                    { order.orderStatus === "Canceled" ? (<button className="bg-danger" style={{ width: "150px", marginLeft: "auto", marginRight: "auto" }} onClick={deleteOrder(order._id)}>Удалить заказ</button>) : (<p></p>)}
                     <div className="btn btn-block">
                         <ShowPaymentInfo order={order} />
                         <div className="row">
@@ -50,9 +51,7 @@ const Orders = ({ orders, handleStatusChange }) => {
                                 >
                                     <option value="Not processed">Not Processed</option>
                                     <option value="Processing">Processing</option>
-                                    <option value="Dispatched">Dispatched</option>
                                     <option value="Delivered">Delivered</option>
-                                    <option value="Completed">Completed</option>
                                     <option value="Canceled">Canceled</option>
                                 </select>
                             </div>
@@ -63,6 +62,7 @@ const Orders = ({ orders, handleStatusChange }) => {
                     <br className="bg-danger" />
                 </div>
             ))}
+
         </>
     )
 }

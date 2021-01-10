@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Card, Tooltip } from 'antd';
 import { Link } from 'react-router-dom';
-import { HeartOutlined, ShoppingCartOutlined } from '@ant-design/icons';
+import { ShoppingCartOutlined } from '@ant-design/icons';
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import DefaultImage from '../../../images/image_1.jpg'
@@ -15,7 +15,7 @@ import { useSelector, useDispatch } from 'react-redux';
 // import RatingModal from '../modal/RatingModal';
 
 
-const { Meta } = Card
+
 
 const DetailedProduct = ({ product }) => {
 
@@ -109,9 +109,9 @@ const DetailedProduct = ({ product }) => {
                                 </Link>
                             </Tooltip>
 
-                            <Link to="/">
+                            {/* <Link to="/">
                                 <HeartOutlined className="text-info" /> <br /> <p className="text-warning">Добавить в отложенные покупки</p>
-                            </Link>
+                            </Link> */}
                         </>
                     ]}
                 >

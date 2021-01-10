@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import AdminNav from './AdminNav';
 import { getOrders, changeStatus } from '../../functions/admin';
+import { orderDelete } from '../../functions/orders';
 import { useSelector } from 'react-redux';
 import Orders from './Orders';
 import { toast } from 'react-toastify';
@@ -26,6 +27,15 @@ const AdminDashboard = () => {
         })
     }
 
+    const deleteOrder = (_id) => {
+        orderDelete(_id, user.token).then(res => {
+            toast.success('Заказ успешно удален');
+            loadOrders()
+        }).catch((err) => {
+            console.log(err)
+        })
+    }
+
     return (
         <div className="container-fluid">
             <div className="row">
@@ -34,7 +44,8 @@ const AdminDashboard = () => {
                 </div>
                 <div className="col-md-10">
                     <h4 className="text-center">Страница Администратора</h4>
-                    <Orders orders={orders} handleStatusChange={handleStatusChange} />
+                    <Orders orders={orders} handleStatusChange={handleStatusChange} deleteOrder={deleteOrder} />
+                    <hr />
                 </div>
             </div>
         </div>

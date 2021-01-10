@@ -16,6 +16,7 @@ const UserProductCard = ({ product }) => {
     const { user, cart } = useSelector((state) => ({ ...state }));
 
     const [tooltip, setTooltip] = useState('Добавить в корзину')
+    const [addToCart, setAddToCart] = useState("Add to cart")
 
     const {
         title,
@@ -45,7 +46,7 @@ const UserProductCard = ({ product }) => {
             //save to localStorage
             localStorage.setItem('cart', JSON.stringify(unique));
             setTooltip('Добавлено в корзину');
-
+            setAddToCart("In cart")
             //add to redux state
             dispatch({
                 type: "ADD_TO_CART",
@@ -58,14 +59,22 @@ const UserProductCard = ({ product }) => {
         }
     }
 
+    // useEffect(() => {
+    //     cartAdded()
+    // }, [])
+
+    // const cartAdded = () => {
+    //     addToCart
+    // }
+
     return (
         <>
-            {product && product.ratings && product.ratings.length > 0 ? (
+            {/* {product && product.ratings && product.ratings.length > 0 ? (
                 showAverage(product)
             ) : (
                     <p className="text-center text-warning" style={{ fontSize: "0.7rem" }}>
                         Этому товару рейтинг пока не выставлен. Вы можете приобрести этот продукт и поставить ему оценку</p>
-                )}
+                )} */}
             <Card
                 cover={
                     <img src={images && images.length ? images[0].url : imageDefault}
@@ -88,7 +97,8 @@ const UserProductCard = ({ product }) => {
                                         <ShoppingCartOutlined
                                             className="text-danger"
                                         />
-                                        <p style={{ color: "red" }}>Добавить в корзину</p>
+                                        <p style={{ color: "red" }} disabled={addToCart === 'In cart'} >Добавить в корзину</p>
+                                        {/* {addToCart === 'In cart' ? (<p>In Cart</p>) : (<p>Add to Cart</p>)} */}
                                     </>
                                 )}
                         </Link>

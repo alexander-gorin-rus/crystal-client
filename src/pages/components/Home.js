@@ -1,50 +1,93 @@
 import React, { useState, useEffect } from 'react'
-//import Molecule1 from '../../images/molecule2.png'
-import { getHomePage } from '../../functions/homePage';
-import imageDefault from '../../images/image_1.jpg'
+import { getHomePage, homeBackgroundGet } from '../../functions/homePage';
+import { getSlides } from '../../functions/homePageSlider';
+import { Carousel } from 'react-responsive-carousel';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import Jumbotron from '../components/cards/Jumbotron';
 
 
 export const Home = () => {
 
     const [homePage, setHomePage] = useState([]);
+    const [backImage, setBackImage] = useState([]);
+
+    const [slidesList, setSlidesList] = useState([]);
+
+    useEffect(() => {
+        getSlides().then(res => {
+            setSlidesList(res.data)
+        }).catch(err =>
+            console.log(err))
+    }, []);
+
+
 
     useEffect(() => {
         getHomePage().then((res) => setHomePage(res.data))
         //console.log(JSON.stringify(homePage, null, 4))
-    }, [])
+    }, []);
+
+    useEffect(() => {
+        homeBackgroundGet().then(res => {
+            setBackImage(res.data)
+        }).catch(err =>
+            console.log(err))
+    }, []);
 
 
     return (
-        <div>
+        <div style={{ position: "absolute", top: "10vh", left: "0%", width: "100vw", height: "100vh" }}>
+            {backImage.map((b, i) => (
+                <div key={i}>
+                    <div
+                        style={{
+                            display: "block",
+                            marginLeft: "auto",
+                            marginRight: "auto",
+                            width: "80%",
+                            fontSize: "1rem"
+                        }} className="backImageFonts">
+                        {b.text && b.text.length ? b.text : ""}
+                    </div>
+                    <img style={{ width: "100vw", height: "100vh", position: "fixed", top: "0%", left: "0%", zIndex: "-10" }} src={b.url} />
+                </div>
+            ))}
             {homePage.map((h) => (
                 <>
-                    <div style={{ position: "absolute", top: "10%", width: "100%", height: "20px" }} >
-                        <p style={{ position: "relative", top: "0%", textAlign: "center" }} className=" h4 pt-2" key={h._id}>{h.title}</p>
+                    <p style={{ position: "relative", top: "0%", textAlign: "center" }} className=" h4 pt-4 mb-4" key={h._id}>{h.title}</p>
+
+                    <ul style={{ listStyle: "none", background: "white", padding: "10px", width: "25vw", margin: "1vw", borderRadius: "10px" }} className="mt-4 homePageFonts" >
+                        <li >{h.address}</li>
+                        <li>{h.email}</li>
+                        <li>{h.phone}</li>
+                    </ul>
+
+                    <div className=" h2 font-weight-bold text-center textInfo" style={{ zIndex: "20" }}>
+                        <Jumbotron text={h.info} />
                     </div>
 
-                    <div style={{ position: "absolute", top: "30%", width: "100%", height: "30%" }} >
-                        <p style={{ position: "relative", top: "0%", textAlign: "center" }}>{h.info}</p>
+                    <div style={{ position: "relative", top: "10vh", width: "100vw" }}>
+                        <div style={{ position: "relative", top: "0%", left: "0%", width: "100vw", height: "100vh", }} >
+
+                            <div style={{ margin: "auto", width: "60%", height: "100%" }} >
+                                <Carousel autoPlay infiniteLoop >
+                                    {slidesList.map((s, i) => (
+
+                                        <img style={{ borderRadius: "10px" }} key={i} src={s.url} alt='info' />
+                                    ))}
+                                </Carousel>
+                            </div>
+
+                            <p style={{ position: "absolute", top: "50vh", left: "45vw", width: "40vw", textAlign: "center", background: "#0011fc", margin: "40px", zIndex: "2", padding: "40px", color: "white", borderRadius: "10px" }} >{h.fullInfo}</p>
+
+
+                        </div>
                     </div>
 
-                    <div style={{ position: "absolute", top: "60%", width: "100%", height: "2%" }} >
-                        <p style={{ position: "relative", top: "0%", textAlign: "end" }}>{h.address}</p>
-                    </div>
-
-                    <div style={{ position: "absolute", top: "80%", width: "100%", height: "2%" }} >
-                        <p style={{ position: "relative", top: "0%", textAlign: "end", }}>{h.email}</p>
-                    </div>
-
-                    <div style={{ position: "absolute", top: "90%", width: "100%", height: "2%" }} >
-                        <p style={{ position: "relative", top: "0%", textAlign: "end" }}>{h.phone}</p>
-                    </div>
-
-                    <img src={h.images && h.images.length ? h.images[0].url : imageDefault}
-                        style={{ height: '100vh', width: "100vw", objectFit: "cover" }}
-                        className="p-1"
-                    />
                 </>
             ))}
         </div>
+
     )
 }
 

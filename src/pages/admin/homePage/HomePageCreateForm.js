@@ -5,6 +5,7 @@ const HomePageCreateForm = ({ handleChange, handleSubmit, values }) => {
     const {
         title,
         info,
+        fullInfo,
         address,
         phone,
         email
@@ -29,7 +30,17 @@ const HomePageCreateForm = ({ handleChange, handleSubmit, values }) => {
                     className="form-control"
                     value={info}
                     onChange={handleChange}
-                    placeholder="Текст о компании"
+                    placeholder="Короткий текст о компании для бегущей строки"
+                />
+            </div>
+
+            <div className="form-group">
+                <textarea
+                    name="fullInfo"
+                    className="form-control"
+                    value={fullInfo}
+                    onChange={handleChange}
+                    placeholder="Полный текст о компании"
                 />
             </div>
 

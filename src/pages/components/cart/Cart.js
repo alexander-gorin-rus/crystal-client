@@ -64,27 +64,29 @@ const Cart = ({ history }) => {
         <div className="container-fluid">
             <h6 className="text-center mt-2">В корзине товаров: {cart.length} </h6>
             <div className="row">
-                <div className="col-md-8">
+                <div className="col-md-12">
                     {!cart.length ? (
                         <p className="text-center">В корзине нет товаров{"  "}<Link to="/result">перейти к покупкам</Link></p>
                     ) : (
                             showCartItems()
                         )}
                 </div>
-                <div className="col-md-4">
-                    <h6>Информация о заказе</h6>
-                    <hr />
-                    {cart.map((c, i) => (
-                        <div key={i}>
-                            <div>{c.title} X {c.count} = {c.price * c.count} тенге</div>
-                        </div>
-                    ))}
-                    <hr />
+                <div className="row">
+                    <div className="col-md-12 ml-5">
+
+                        <h6>Информация о заказе</h6>
+                        <hr />
+                        {cart.map((c, i) => (
+                            <div key={i}>
+                                <div>{c.title} X {c.count} = {c.price * c.count} тенге</div>
+                            </div>
+                        ))}
+                        <hr />
                     На общую сумму: {getTotal()} тенге
                     <hr />
-                    {user ? (
-                        <>
-                            {/* <button
+                        {user ? (
+                            <>
+                                {/* <button
                                 className="btn btn-primary btn-sm mt-2"
                                 onClick={saveOrderToDb}
                                 disabled={!cart.length}
@@ -92,23 +94,26 @@ const Cart = ({ history }) => {
                                 Оформить заказ и оплатить картой
                             </button> */}
 
-                            <button
-                                className="btn btn-primary btn-sm mt-2"
-                                onClick={saveCashOrderToDb}
-                                disabled={!cart.length}
-                            >
-                                Оформить заказ и оплатить наличными по доставке
+                                <button
+                                    className="btn btn-primary btn-sm mt-2"
+                                    onClick={saveCashOrderToDb}
+                                    disabled={!cart.length}
+                                >
+                                    Оформить заказ
                             </button>
-                        </>
-                    ) : (
-                            <>
-                                <p className="mr-4">Вы не авторизованы</p>
-                                <Link to="/login">Авторизоваться</Link>
-                                <p className="mr-4">либо</p>
-                                <Link to="/register">Зарегистрироваться</Link>
                             </>
-                        )}
+                        ) : (
+                                <>
+                                    <p className="mr-4">Вы не авторизованы</p>
+                                    <Link to="/login">Авторизоваться</Link>
+                                    <p className="mr-4">либо</p>
+                                    <Link to="/register">Зарегистрироваться</Link>
+                                </>
+                            )}
+
+                    </div>
                 </div>
+
             </div>
         </div>
     )

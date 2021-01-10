@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { getOneForUpdate, updateHomePage } from '../../functions/homePage'
 import { useSelector } from 'react-redux';
 import { LoadingOutlined } from '@ant-design/icons';
-import FileUpload from '../components/forms/FileUpload';
 import AdminNav from '../admin/AdminNav';
 import HomeUpdateForm from './HomeUpdateForm';
 import { toast } from 'react-toastify';
@@ -13,6 +12,7 @@ const HomePageUpdate = ({ match, history }) => {
     const initialState = {
         title: "",
         info: "",
+        fullInfo: "",
         address: "",
         phone: "",
         email: "",
@@ -33,18 +33,17 @@ const HomePageUpdate = ({ match, history }) => {
     }, [])
 
     const loadHomePage = () => {
-        getOneForUpdate(slug).then(res => setValues({ ...values, ...res.data }))
+        getOneForUpdate(slug).then(res =>
+            setValues({ ...values, ...res.data }))
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
         setLoading(true);
-
-
         updateHomePage(slug, values, user.token)
             .then(res => {
                 setLoading(false);
-                console.log(res);
+                // console.log(res);
                 toast.success(`Информация о кмпании успешно изменена`)
                 history.push('/admin/dashboard')
             }).catch(err => {
@@ -68,11 +67,7 @@ const HomePageUpdate = ({ match, history }) => {
                 <div className="col-md-10">
                     {loading ? (<LoadingOutlined className="text-danger h1" />) : (<h5 className="text-center mt-3">Изменить домашнюю страницу</h5>)}
                     <div className="p-3">
-                        <FileUpload
-                            values={values}
-                            setValues={setValues}
-                            setLoading={setLoading}
-                        />
+
                         <HomeUpdateForm
                             handleSubmit={handleSubmit}
                             handleChange={handleChange}
