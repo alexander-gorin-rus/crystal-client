@@ -138,21 +138,21 @@ const Checkout = ({ history }) => {
         </>
     )
 
-    const showApplyCoupon = () => (
-        <>
-            <input
-                type="text"
-                className="form-control m-4"
-                placeholder="Введите название купона"
-                onChange={(e) => {
-                    setCoupon(e.target.value)
-                    setDiscountError("")
-                }}
-                value={coupon}
-            />
-            <button onClick={applyDiscountCoupon} className="btn btn-primary mt-2">Применить скидочный купон</button>
-        </>
-    )
+    // const showApplyCoupon = () => (
+    //     <>
+    //         <input
+    //             type="text"
+    //             className="form-control m-4"
+    //             placeholder="Введите название купона"
+    //             onChange={(e) => {
+    //                 setCoupon(e.target.value)
+    //                 setDiscountError("")
+    //             }}
+    //             value={coupon}
+    //         />
+    //         <button onClick={applyDiscountCoupon} className="btn btn-primary mt-2">Применить скидочный купон</button>
+    //     </>
+    // )
 
     const createCashOrder = () => {
         createCashOrderForUser(user.token, COD, couponTrueOrFalse)
