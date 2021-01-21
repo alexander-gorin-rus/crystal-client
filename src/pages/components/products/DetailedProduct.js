@@ -6,7 +6,7 @@ import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import DefaultImage from '../../../images/image_1.jpg'
 import ProductListItems from './ProductListItems';
-import { showAverage } from '../../../functions/rating';
+//import { showAverage } from '../../../functions/rating';
 import _ from 'lodash';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -20,7 +20,7 @@ import { useSelector, useDispatch } from 'react-redux';
 const DetailedProduct = ({ product }) => {
 
     const dispatch = useDispatch();
-    const { user, cart } = useSelector((state) => ({ ...state }))
+    //const { user, cart } = useSelector((state) => ({ ...state }))
 
     const [added, setAdded] = useState(false);
     const [tooltip, setTooltip] = useState('Добавить в корзину');
@@ -84,8 +84,8 @@ const DetailedProduct = ({ product }) => {
             </div>
             <div className="col-md-7">
                 <h4 className="bg-info p-3 text-center">{title}</h4>
-                <h6 className="text-center">Рейтинг продукта:</h6>
-                {product && product.ratings && product.ratings.length > 0 ? showAverage(product) : (<p className="text-center text-warning" style={{ fontSize: "0.7rem" }}>Этому товару рейтинг пока не выставлен. Вы можете приобрести этот продукт и поставить ему оценку</p>)}
+                {/* <h6 className="text-center">Рейтинг продукта:</h6>
+                {product && product.ratings && product.ratings.length > 0 ? showAverage(product) : (<p className="text-center text-warning" style={{ fontSize: "0.7rem" }}>Этому товару рейтинг пока не выставлен. Вы можете приобрести этот продукт и поставить ему оценку</p>)} */}
                 <Card
                     actions={[
                         <>

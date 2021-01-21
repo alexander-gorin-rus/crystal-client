@@ -16,7 +16,7 @@ const ProductListItems = ({ product }) => {
     } = product
     return (
         <>
-            <p>{fullDescription}</p>
+            <p className="text-center text-primary">{fullDescription}</p>
             <ul className="list-group">
                 <li className="list-group-item">
                     Цена:
@@ -61,12 +61,12 @@ const ProductListItems = ({ product }) => {
                     </span>
                 </li>
 
-                <li className="list-group-item">
+                {/* <li className="list-group-item">
                     Продано этого товара:
                 <span className="label label-default label-pill pull-xs-right">
                         {sold}
                     </span>
-                </li>
+                </li> */}
             </ul>
         </>
     )

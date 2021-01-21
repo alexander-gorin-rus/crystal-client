@@ -11,7 +11,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import ReactQuill from 'react-quill';
 import "react-quill/dist/quill.snow.css"
-import WhatsAppWidget from 'react-whatsapp-widget'
+//import WhatsAppWidget from 'react-whatsapp-widget'
 import 'react-whatsapp-widget/dist/index.css'
 
 
@@ -86,31 +86,31 @@ const Checkout = ({ history }) => {
             })
     }
 
-    const applyDiscountCoupon = () => {
-        console.log('apply discount coupon', coupon)
+    // const applyDiscountCoupon = () => {
+    //     console.log('apply discount coupon', coupon)
 
-        applyCoupon(user.token, coupon)
-            .then((res) => {
-                console.log('DISCOUNT COUPON IS', res.data)
-                if (res.data) {
-                    setTotalAfterDiscount(res.data);
-                    //update redux coupon applied true/false
-                    dispatch({
-                        type: "COUPON_APPLIED",
-                        payload: true
-                    });
-                }
-                //error
-                if (res.data.err) {
-                    setDiscountError(res.data.err);
-                    //update redux coupon applied true/false
-                    dispatch({
-                        type: "COUPON_APPLIED",
-                        payload: false
-                    });
-                }
-            })
-    }
+    //     applyCoupon(user.token, coupon)
+    //         .then((res) => {
+    //             console.log('DISCOUNT COUPON IS', res.data)
+    //             if (res.data) {
+    //                 setTotalAfterDiscount(res.data);
+    //                 //update redux coupon applied true/false
+    //                 dispatch({
+    //                     type: "COUPON_APPLIED",
+    //                     payload: true
+    //                 });
+    //             }
+    //             //error
+    //             if (res.data.err) {
+    //                 setDiscountError(res.data.err);
+    //                 //update redux coupon applied true/false
+    //                 dispatch({
+    //                     type: "COUPON_APPLIED",
+    //                     payload: false
+    //                 });
+    //             }
+    //         })
+    // }
 
     const showAddress = () => (
         <>
