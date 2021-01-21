@@ -23,6 +23,8 @@ const DetailedProduct = ({ product }) => {
     //const { user, cart } = useSelector((state) => ({ ...state }))
 
     const [added, setAdded] = useState(false);
+    const [addToCart, setAddToCart] = useState("Добавить в корзину");
+
     const [tooltip, setTooltip] = useState('Добавить в корзину');
 
     const {
@@ -49,7 +51,7 @@ const DetailedProduct = ({ product }) => {
             //save to localStorage
             localStorage.setItem('cart', JSON.stringify(unique));
             setTooltip('Добавлено в корзину');
-
+            setAddToCart(<p className="text-success">Товар добавлен в корзину</p>)
             //add to redux state
             dispatch({
                 type: "ADD_TO_CART",
@@ -103,8 +105,19 @@ const DetailedProduct = ({ product }) => {
                                             </>
                                         )} */}
                                     <>
-                                        <ShoppingCartOutlined className="text-danger" /> <br />
-                                        <p style={{ color: "red" }}>Добавить в корзину</p>
+                                    {product.quantity < 1 ? (
+                                "На складе этот товар отсутствует"
+                            ) : (
+                                    <>
+                                        <ShoppingCartOutlined
+                                            className="text-danger"
+                                        />
+                                        <p style={{ color: "red" }} >{addToCart}</p>
+                                        {/* {showInCartState(addToCart)} */}
+                                    </>
+                                )}
+                                        {/* <ShoppingCartOutlined className="text-danger" /> <br />
+                                        <p style={{ color: "red" }}>Добавить в корзину</p> */}
                                     </>
                                 </Link>
                             </Tooltip>

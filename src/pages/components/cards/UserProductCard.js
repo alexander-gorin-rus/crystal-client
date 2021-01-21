@@ -16,7 +16,7 @@ const UserProductCard = ({ product }) => {
     const { cart } = useSelector((state) => ({ ...state }));
 
     const [tooltip, setTooltip] = useState('Добавить в корзину')
-    const [addToCart, setAddToCart] = useState("Добавить в корзину")
+    const [addToCart, setAddToCart] = useState("Добавить в корзину");
 
     const {
         _id,
