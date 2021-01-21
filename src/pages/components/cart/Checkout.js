@@ -206,13 +206,13 @@ const Checkout = ({ history }) => {
                 <p className="text-center text-info " style={{fontSize: "0.7rem"}}>В произвольной форме</p>
                 {showAddress()}
                 <hr />
-                <h4 className="text-center">Желаете получить скидку?</h4>
+                {/* <h4 className="text-center">Желаете получить скидку?</h4>
                 <p style={{fontSize: "0.9rem"}} className="text-center text-danger">Пожалуйста, позвоните менеджеру {homePage.map((h, i) => (<h5 className="text-info" key={i}>{h.phone}</h5>))} для получения персональной скидки</p>
                
                 <br />
                 {showApplyCoupon()}
                 <br />
-                {discountError && <p className="bg-danger text-center">{discountError}</p>}
+                {discountError && <p className="bg-danger text-center">{discountError}</p>} */}
             </div>
             <div className="col-md-6">
                 <h4 className="mt-3 text-center">Мой заказ:</h4>
