@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import imageDefault from '../../../images/image_1.jpg';
 import { Card, Tooltip } from 'antd';
 import { EyeOutlined, ShoppingCartOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
-import { showAverage } from '../../../functions/rating';
+//import { showAverage } from '../../../functions/rating';
 import _ from 'lodash';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -13,19 +13,20 @@ const UserProductCard = ({ product }) => {
 
     //redux
     const dispatch = useDispatch();
-    const { user, cart } = useSelector((state) => ({ ...state }));
+    const { cart } = useSelector((state) => ({ ...state }));
 
     const [tooltip, setTooltip] = useState('Добавить в корзину')
-    const [addToCart, setAddToCart] = useState("Add to cart")
+    const [addToCart, setAddToCart] = useState("Добавить в корзину")
 
     const {
+        _id,
         title,
         price,
         volume,
         description,
         images,
         slug,
-        sold
+        quantity
     } = product
 
     const handleAddToCart = () => {
@@ -46,7 +47,7 @@ const UserProductCard = ({ product }) => {
             //save to localStorage
             localStorage.setItem('cart', JSON.stringify(unique));
             setTooltip('Добавлено в корзину');
-            setAddToCart("In cart")
+            setAddToCart(<p className="text-success">Товар добавлен в корзину</p>)
             //add to redux state
             dispatch({
                 type: "ADD_TO_CART",
@@ -59,12 +60,10 @@ const UserProductCard = ({ product }) => {
         }
     }
 
-    // useEffect(() => {
-    //     cartAdded()
-    // }, [])
-
-    // const cartAdded = () => {
-    //     addToCart
+    // const showInCartState = (_id) => {
+    //     if (product._id in cart) {
+    //         setAddToCart(<p className="text-success">Товар добавлен в корзину</p>)
+    //     }
     // }
 
     return (
@@ -77,7 +76,7 @@ const UserProductCard = ({ product }) => {
                 )} */}
             <Card
                 cover={
-                    <img src={images && images.length ? images[0].url : imageDefault}
+                    <img alt="card" src={images && images.length ? images[0].url : imageDefault}
                         style={{ height: '150px', objectFit: "cover" }}
                         className="p-1"
                     />
@@ -88,7 +87,7 @@ const UserProductCard = ({ product }) => {
                         <EyeOutlined className="text-warning" /> <br /> <p className="text-warning">Подробнее о продукте</p>
                     </Link>,
                     <Tooltip title={tooltip}>
-                        <Link onClick={handleAddToCart} disabled={product.quantity < 1}>
+                        <div onClick={handleAddToCart} disabled={product.quantity < 1}>
                             <br />
                             {product.quantity < 1 ? (
                                 "На складе этот товар отсутствует"
@@ -97,11 +96,11 @@ const UserProductCard = ({ product }) => {
                                         <ShoppingCartOutlined
                                             className="text-danger"
                                         />
-                                        <p style={{ color: "red" }} disabled={addToCart === 'In cart'} >Добавить в корзину</p>
-                                        {/* {addToCart === 'In cart' ? (<p>In Cart</p>) : (<p>Add to Cart</p>)} */}
+                                        <p style={{ color: "red" }} >{addToCart}</p>
+                                        {/* {showInCartState(addToCart)} */}
                                     </>
                                 )}
-                        </Link>
+                        </div>
                     </Tooltip>
                 ]}
             >
@@ -109,8 +108,9 @@ const UserProductCard = ({ product }) => {
                 <div style={{ color: "#3427e8" }}>{description}</div>
                 <div><p className="text-danger" style={{ fontSize: "0.9rem", display: "inline" }}>Цена:</p> {price} <p className="text-danger" style={{ fontSize: "0.9rem", display: "inline" }}>тенге</p></div>
                 <div className="text-info">Объём тары в литрах : {volume / 1000}</div>
-                <div className="text-primary">Количество проданного товара: {sold} единиц</div>
+                <div className="text-primary">Доступное количество на складе: {quantity} единиц</div>
             </Card>
+
         </>
     )
 }

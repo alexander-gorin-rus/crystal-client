@@ -2,7 +2,7 @@ import React from 'react';
 
 
 
-const ShowPaymentInfo = ({ order, deleteOrder }) => {
+const ShowPaymentInfo = ({ order }) => {
 
 
     let classes = [];
@@ -15,14 +15,14 @@ const ShowPaymentInfo = ({ order, deleteOrder }) => {
     if (order.orderStatus === "Delivered") {
         classes.push("textgreen")
     }
-    if (order.orderStatus === "Canceled") {
+    if (order.orderStatus === "Deleted") {
         return (
             <>
                 <p>Дата заказа: {new Date(order.paymentIntent.created).toLocaleString()}.</p>
                 <p>ID заказа: {order.paymentIntent.id}{" "}</p>
                 <p>Сумма: {order.paymentIntent.amount}{" "}тенге.</p>
                 <p>Адрес: {order.paymentIntent.address}</p>
-                <p className="bg-danger m-3">Заказ отменен</p>
+                <p style={{ background: '#ddf502' }} className="text-center m-3 textInfo">Заказ отменен клиентом, <br /> либо успешно выполнен и готов к удалению из базы данных</p>
             </>
 
         )
@@ -32,8 +32,6 @@ const ShowPaymentInfo = ({ order, deleteOrder }) => {
 
     return (
         <div  >
-            {/* { order.orderStatus === "Delivered" ||
-                order.orderStatus === "Canceled" ? (<button className="bg-danger" onClick={deleteOrder}>Удалить заказ</button>) : (<p></p>)} */}
             <p >
                 <span>Дата заказа: {new Date(order.paymentIntent.created).toLocaleString()}.</span>
                 <br />

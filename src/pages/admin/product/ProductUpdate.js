@@ -21,6 +21,7 @@ const ProductUpdate = ({ match, history }) => {
         price: "",
         volume: "",
         quantity: "",
+        nn: "",
         images: []
     }
 

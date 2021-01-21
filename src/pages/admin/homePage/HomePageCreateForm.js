@@ -8,7 +8,10 @@ const HomePageCreateForm = ({ handleChange, handleSubmit, values }) => {
         fullInfo,
         address,
         phone,
-        email
+        email,
+        iin,
+        responsiblePerson,
+        appendix
     } = values
     return (
         <form onSubmit={handleSubmit}>
@@ -74,6 +77,39 @@ const HomePageCreateForm = ({ handleChange, handleSubmit, values }) => {
                     value={email}
                     onChange={handleChange}
                     placeholder="email"
+                />
+            </div>
+
+            <div className="form-group">
+                <input
+                    type="text"
+                    name="iin"
+                    className="form-control"
+                    value={iin}
+                    onChange={handleChange}
+                    placeholder="ИИН"
+                />
+            </div>
+
+            <div className="form-group">
+                <input
+                    type="text"
+                    name="responsiblePersone"
+                    className="form-control"
+                    value={responsiblePerson}
+                    onChange={handleChange}
+                    placeholder="Ответственное лицо"
+                />
+            </div>
+
+            <div className="form-group">
+                <input
+                    type="text"
+                    name="appendix"
+                    className="form-control"
+                    value={appendix}
+                    onChange={handleChange}
+                    placeholder="Текст для шапки в накладной"
                 />
             </div>
 

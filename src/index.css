@@ -1,131 +1,185 @@
 .jumbotron {
-    width: 30wh;
-    height: 30vh;
-    color: #fff;
-    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-    background-size: 400% 400%;
-    -webkit-animation: Gradient 15s ease infinite;
-    -moz-animation: Gradient 15s ease infinite;
-    animation: Gradient 15s ease infinite;
+  width: 30wh;
+  height: 30vh;
+  color: #fff;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  -webkit-animation: Gradient 15s ease infinite;
+  -moz-animation: Gradient 15s ease infinite;
+  animation: Gradient 15s ease infinite;
 }
 
-.company-animation{
-    background: linear-gradient(-45deg, #f3eace, #a26be0, #0a348f, #bfe70a);
-    background-size: 400% 400%;
-    -webkit-animation: Gradient 15s ease infinite;
-    -moz-animation: Gradient 15s ease infinite;
-    animation: Gradient 15s ease infinite;
+.company-animation {
+  background: linear-gradient(-45deg, #f3eace, #a26be0, #0a348f, #bfe70a);
+  background-size: 400% 400%;
+  -webkit-animation: Gradient 15s ease infinite;
+  -moz-animation: Gradient 15s ease infinite;
+  animation: Gradient 15s ease infinite;
 }
 
-@media (max-width: 1000px){
-.mediaQuery{
-    font-size: 0.7em; 
+@media (max-width: 1000px) {
+  .mediaQuery {
+    font-size: 0.7em;
+  }
 }
-}
-
 
 .slider img {
-    height: 65vh;
-    width: 20vw;
-    object-fit: cover;
+  height: 65vh;
+  width: 20vw;
+  object-fit: cover;
 }
 @-webkit-keyframes Gradient {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
- 
+
 @-moz-keyframes Gradient {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
- 
+
 @keyframes Gradient {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
-} 
-
-
-@media (max-width: 1000px){
-    .textInfo{
-        font-size: 1.1em; 
-    }
-    }
-
-
-.backImageFonts{
-    font-family: 'Dancing Script', cursive;
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
-
-.homePageFonts{
-    font-size: 0.9rem;
+@media (max-width: 1000px) {
+  .textInfo {
+    font-size: 1.1em;
+  }
 }
 
-@media (max-width: 900px){
-.homePageFonts{
-        font-size: 0.7rem;
-    }
+.backImageFonts {
+  font-family: 'Dancing Script', cursive;
 }
 
-.slider1{
-    position: relative;
-    top: 0%;
-    left: 10%;
-    width: 60%;
-    height: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.homePageFonts {
+  font-size: 0.9rem;
 }
 
-.image{
-    top: 0%;
-    width: 100%;
-    border-radius: 15px;
+@media (max-width: 900px) {
+  .homePageFonts {
+    font-size: 0.7rem;
+  }
 }
 
-.right-arrow{
-    position: absolute;
-    font-size: 3rem;
-    top: 0%;
-    left: 50%;
-    z-index: 10;
+.slider1 {
+  position: relative;
+  top: 0%;
+  left: 10%;
+  width: 60%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.left-arrow{
-    font-size: 3rem;
+.image {
+  top: 0%;
+  width: 100%;
+  border-radius: 15px;
 }
 
-.textred{
-    color: red;
+.right-arrow {
+  position: absolute;
+  font-size: 3rem;
+  top: 0%;
+  left: 50%;
+  z-index: 10;
 }
 
-.textgreen{
-    color: green;
+.left-arrow {
+  font-size: 3rem;
 }
 
-.textyellow{
-    color: yellow;
+.textred {
+  color: red;
 }
 
+.textgreen {
+  color: green;
+}
+
+.textyellow {
+  color: yellow;
+}
+
+.appendix {
+  position: relative;
+  top: 3%;
+  width: 15%;
+  font-size: 0.6rem;
+  left: 75%;
+}
+
+.formNumber {
+  position: relative;
+  width: 15%;
+  font-size: 0.6rem;
+  left: 85%;
+  margin-bottom: 30px;
+}
+
+.companyInfo {
+  position: relative;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.textScale1 {
+  font-size: 0.6rem;
+  display: inline;
+  padding: 10px;
+}
+
+.textScale2 {
+  font-size: 0.7rem;
+  display: inline;
+  padding: 10px;
+}
+
+.textScale3 {
+  font-size: 0.6rem;
+  display: inline;
+  padding: 10px;
+}
+
+.iin {
+  display: inline;
+  font-size: 0.6rem;
+  border: 1px solid black;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-right: 14px;
+  padding-left: 14px;
+}
+
+.docNumber {
+  position: relative;
+  left: 65%;
+}
+
+.invoiceInfo {
+  position: relative;
+}

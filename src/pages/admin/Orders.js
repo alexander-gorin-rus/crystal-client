@@ -1,6 +1,6 @@
 import React from 'react';
-//import { CheckCircleOulined, CloseCircleFilled } from '@ant-design/icons';
 import ShowPaymentInfo from '../user/ShowPaymentInfo';
+import { Link } from 'react-router-dom';
 
 const Orders = ({ orders, handleStatusChange, deleteOrder }) => {
 
@@ -10,9 +10,11 @@ const Orders = ({ orders, handleStatusChange, deleteOrder }) => {
                 <thead className="thead-light">
                     <tr>
                         <th scope="col">Название товара</th>
+                        <th scope="col">Номенклатурный номер</th>
                         <th scope="col">Цена</th>
                         <th scope="col">Объём тары в литрах</th>
                         <th scope="col">Количество</th>
+                        <th scope="col">На сумму в KZT</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -21,9 +23,11 @@ const Orders = ({ orders, handleStatusChange, deleteOrder }) => {
                             <td>
                                 <b>{p.product.title}</b>
                             </td>
+                            <td>{p.product.nn}</td>
                             <td>{p.product.price}</td>
                             <td>{p.product.volume / 1000}</td>
                             <td>{p.count}</td>
+                            <td>{p.count * p.product.price}</td>
                         </tr>
                     ))}
                 </tbody>
@@ -31,11 +35,27 @@ const Orders = ({ orders, handleStatusChange, deleteOrder }) => {
         )
     }
 
+    const deleteOrderHandler = (_id) => {
+        const answer = window.confirm('Макс, ты точно хочешь удалить этот заказ?')
+        if (answer) {
+            deleteOrder(_id)
+        }
+
+    }
+
     return (
         <>
             {orders.map((order) => (
+                <>
                 <div key={order._id} className="row pb-5">
-                    { order.orderStatus === "Canceled" ? (<button className="bg-danger" style={{ width: "150px", marginLeft: "auto", marginRight: "auto" }} onClick={deleteOrder(order._id)}>Удалить заказ</button>) : (<p></p>)}
+                    {order.orderStatus === "Deleted" ? 
+
+                        (<button 
+                            className="bg-danger" 
+                            style={{ width: "150px", marginLeft: "auto", marginRight: "auto" }} 
+                            onClick={() => deleteOrderHandler(order._id)}>
+                                Удалить заказ
+                        </button>) : (<p></p>)}
                     <div className="btn btn-block">
                         <ShowPaymentInfo order={order} />
                         <div className="row">
@@ -52,15 +72,17 @@ const Orders = ({ orders, handleStatusChange, deleteOrder }) => {
                                     <option value="Not processed">Not Processed</option>
                                     <option value="Processing">Processing</option>
                                     <option value="Delivered">Delivered</option>
-                                    <option value="Canceled">Canceled</option>
+                                    <option value="Deleted">Deleted</option>
                                 </select>
                             </div>
                         </div>
                     </div>
                     {showOrdersInTable(order)}
                     <br />
-                    <br className="bg-danger" />
+                    <br />
                 </div>
+                {/* <Link to={`/admin/invoice/${order._id}`}>Просмотреть заказ в форме накладной</Link> */}
+                </>
             ))}
 
         </>

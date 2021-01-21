@@ -29,6 +29,9 @@ const HomePageCreate = ({ history }) => {
         address: "",
         phone: "",
         email: "",
+        iin: "",
+        responsiblePerson: "",
+        appendix: ""
     }
 
     //const [Images, setImages] = useState([])

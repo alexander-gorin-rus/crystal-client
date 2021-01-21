@@ -14,6 +14,9 @@ const HomeUpdateForm = ({
         address,
         phone,
         email,
+        iin,
+        responsiblePerson,
+        appendix,
         images } = values;
 
 
@@ -90,6 +93,40 @@ const HomeUpdateForm = ({
                     value={email}
                     onChange={handleChange}
                     placeholder="Email"
+                />
+            </div>
+
+            <div className="form-group">
+                <label className="text-center text-primary">ИИН</label>
+                <input
+                    type="text"
+                    name="iin"
+                    className="form-control"
+                    value={iin}
+                    onChange={handleChange}
+                    placeholder="ИИН"
+                />
+            </div>
+
+            <div className="form-group">
+                <label className="text-center text-primary">Ответственное лицо</label>
+                <input
+                    type="text"
+                    name="responsiblePerson"
+                    className="form-control"
+                    value={responsiblePerson}
+                    onChange={handleChange}
+                />
+            </div>
+
+            <div className="form-group">
+                <label className="text-center text-primary">Для шапки в накладной</label>
+                <input
+                    type="text"
+                    name="appendix"
+                    className="form-control"
+                    value={appendix}
+                    onChange={handleChange}
                 />
             </div>
 

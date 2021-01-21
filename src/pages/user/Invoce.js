@@ -14,7 +14,7 @@ const Invoice = ({ order }) => (
             <Text style={styles.header} fixed>
                 ~ {new Date().toLocaleString()} ~
       </Text>
-            <Text style={styles.title}>Order Invoice</Text>
+            <Text style={styles.title}>Client Order Invoice</Text>
             <Text style={styles.author}>Crystal Chemicals</Text>
             <Text style={styles.subtitle}>Order Summary</Text>
 

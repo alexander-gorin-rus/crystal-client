@@ -16,6 +16,9 @@ const HomePageUpdate = ({ match, history }) => {
         address: "",
         phone: "",
         email: "",
+        iin: "",
+        responsiblePersone: "",
+        appendix: "",
         images: []
     }
 
@@ -44,7 +47,7 @@ const HomePageUpdate = ({ match, history }) => {
             .then(res => {
                 setLoading(false);
                 // console.log(res);
-                toast.success(`Информация о кмпании успешно изменена`)
+                toast.success(`Информация о компании успешно изменена`)
                 history.push('/admin/dashboard')
             }).catch(err => {
                 setLoading(false);

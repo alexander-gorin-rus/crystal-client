@@ -15,6 +15,7 @@ const ProductCreateForm = ({ handleChange, handleSubmit, handleCategoryChange, s
         price,
         volume,
         quantity,
+        nn,
         images } = values;
     return (
         <form onSubmit={handleSubmit}>
@@ -83,6 +84,17 @@ const ProductCreateForm = ({ handleChange, handleSubmit, handleCategoryChange, s
                     value={quantity}
                     onChange={handleChange}
                     placeholder="Количество"
+                />
+            </div>
+
+            <div className="form-group">
+                <input
+                    type="text"
+                    name="nn"
+                    className="form-control"
+                    value={nn}
+                    onChange={handleChange}
+                    placeholder="Номенклатурный номер"
                 />
             </div>
 

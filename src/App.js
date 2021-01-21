@@ -46,6 +46,7 @@ import { auth } from './firebase';
 import { currentUser } from './functions/auth';
 import { useDispatch } from 'react-redux';
 import { LoadingOutlined } from '@ant-design/icons'
+//import { AdminInvoice1 } from './pages/admin/AdminInvoice1';
 
 //components
 const Header = lazy(() => import('./pages/components/navigation/Header'));
@@ -88,6 +89,8 @@ const HomePageCreate = lazy(() => import('./pages/admin/homePage/HomePageCreate'
 const BackgroundPageCreate = lazy(() => import('./pages/admin/background/BackgroundPageCreate'));
 const BackgroundPageUpdate = lazy(() => import('./pages/admin/background/BackgroundPageUpdate'));
 const Slider = lazy(() => import('./pages/admin/slider/Slider'));
+const AdminInvoice1 = lazy(() => import('./pages/admin/AdminInvoice1'));
+
 
 
 const App = () => {
@@ -164,7 +167,7 @@ const App = () => {
           <AdminRoute path="/admin/home/:slug" exact component={HomePageUpdate} />
           <AdminRoute path="/admin/home-background/:slug" exact component={BackgroundPageUpdate} />
           <AdminRoute path="/admin/home-slider" exact component={Slider} />
-
+          <AdminRoute path="/admin/invoice/:id" exact component={AdminInvoice1} />
         </Switch>
       </Suspense>
     </BrowserRouter>

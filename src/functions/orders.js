@@ -8,3 +8,6 @@ export const orderDelete = async (_id, authtoken) =>
             }
         }
     )
+
+export const readOrder = async (_id) => 
+    axios.get(`${process.env.REACT_APP_API}/order/${_id}`)

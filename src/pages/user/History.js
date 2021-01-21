@@ -1,17 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import UserNav from '../components/navigation/UserNav';
 import { getUserOrders } from '../../functions/user';
-import { useSelector, useDispatch } from 'react-redux';
-import { CheckCircleOutlined, CloseCircleOutlined } from '@ant-design/icons';
-import { toast } from 'react-toastify';
+import { useSelector } from 'react-redux';
 import ShowPaymentInfo from './ShowPaymentInfo';
-import { PDFDownloadLink } from '@react-pdf/renderer';
-import Invoce from './Invoce';
+
 
 const History = () => {
 
     const [orders, setOrders] = useState([]);
-    const [loading, setLoading] = useState(false);
 
     const { user } = useSelector((state) => ({ ...state }));
 
@@ -22,22 +18,12 @@ const History = () => {
 
     const loadUserOrders = () => {
         getUserOrders(user.token).then((res) => {
-            console.log(JSON.stringify(res.data, null, 4));
+            //console.log(JSON.stringify(res.data, null, 4));
             setOrders(res.data)
         });
     }
 
-    const showDownloadLink = (order) => {
-        return (
-            <PDFDownloadLink document={<Invoce order={order} />}
-                fileName="invoce.pdf"
-                className="btn btn-sm btn-block btn-outline-primary"
-            >
-                Скачать документ в PDF формате
-            </PDFDownloadLink>
-        )
-    }
-
+    
     const showOrdersInTable = (order) => {
         return (
             <table className="table table-bordered">
@@ -47,6 +33,7 @@ const History = () => {
                         <th scope="col">Цена</th>
                         <th scope="col">Объём тары в литрах</th>
                         <th scope="col">Количество</th>
+                        <th scope="col">На сумму в KZT</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -58,8 +45,9 @@ const History = () => {
                             <td>{p.product.price}</td>
                             <td>{p.product.volume / 1000}</td>
                             <td>{p.count}</td>
+                            <td>{p.count * p.product.price}</td>
                         </tr>
-                    ))}
+                    ))} 
                 </tbody>
             </table>
         )
@@ -71,12 +59,8 @@ const History = () => {
                 <p>Информация о заказе</p>
                 <ShowPaymentInfo order={order} />
                 {showOrdersInTable(order)}
-                <div className="row">
-                    <div className="col">
-                        {showDownloadLink(order)}
-                    </div>
-                </div>
             </div>
+           
         ))
 
 

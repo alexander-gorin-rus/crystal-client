@@ -61,7 +61,8 @@ const Checkout = ({ history }) => {
     const emptyCart = () => {
         //remove cart from localStorage
         if (typeof window !== 'undefined') {
-            localStorage.removeItem('cart')
+            localStorage.removeItem('cart');
+            history.push('/products')
         }
 
         //remove cart from redux
@@ -116,9 +117,11 @@ const Checkout = ({ history }) => {
             <ReactQuill theme="snow" value={address} onChange={setAddress} />
             <button
                 className="btn btn-primary mt-2"
-                onClick={saveAddressToDb}>
+                onClick={saveAddressToDb}
+                disabled={address === ''}
+                >
                 Сохранить адрес
-                </button>
+            </button>
         </>
     )
 
@@ -196,7 +199,7 @@ const Checkout = ({ history }) => {
         <div className="row mb-5">
             <div className="col-md-6">
                 <p className="text-center text-danger mt-3">
-                Во избежание задержек с доставкой товара, просим Вас корректно заполнить адрес для доставки, с указанием номера телефона и именем Заказчика    
+                Во избежание задержек с доставкой товара, просим Вас корректно заполнить адрес для доставки, с указанием Вашей компании и номера телефона    
                 </p> 
                 <br />
                 <h4 className="text-center">Адрес Заказчика:</h4>
@@ -204,8 +207,8 @@ const Checkout = ({ history }) => {
                 {showAddress()}
                 <hr />
                 <h4 className="text-center">Желаете получить скидку?</h4>
-                <p style={{fontSize: "0.9rem"}} className="text-center text-danger">Пожалуйста, позвоните менеджеру на номер {homePage.map((h, i) => (<h5 className="text-info" key={i}>{h.phone}</h5>))}, либо отправте сообщение на WhatsApp для получения персональной скидки</p>
-                <WhatsAppWidget phoneNumber={homePage.map((h, i) => (<p className="text-info" key={i}>{h.phone}</p>))} message="Компания Crystal рада приветствовать вас" />
+                <p style={{fontSize: "0.9rem"}} className="text-center text-danger">Пожалуйста, позвоните менеджеру {homePage.map((h, i) => (<h5 className="text-info" key={i}>{h.phone}</h5>))} для получения персональной скидки</p>
+               
                 <br />
                 {showApplyCoupon()}
                 <br />
@@ -239,7 +242,6 @@ const Checkout = ({ history }) => {
               Отправить заказ
             </button>
            ) : (
-            //    <div></div>
             <button
             onClick={() => history.push('/payment')}
             className="btn btn-primary"
@@ -252,7 +254,7 @@ const Checkout = ({ history }) => {
                     <div className="col-md-6">
                         <button
                             disabled={products.length === 0}
-                            onClick={emptyCart}
+                            onClick={() => emptyCart()}
                             className="btn btn-danger"
                         >Отменить заказ
                         </button>

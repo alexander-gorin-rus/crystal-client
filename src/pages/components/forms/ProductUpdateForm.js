@@ -26,6 +26,7 @@ const ProductUpdateForm = ({
         price,
         volume,
         quantity,
+        nn,
         images } = values;
 
 
@@ -33,50 +34,51 @@ const ProductUpdateForm = ({
         <form onSubmit={handleSubmit}>
 
             <div className="form-group">
+                <label className="text-center text-info">Название продукта</label>
                 <input
                     type="text"
                     name="title"
                     className="form-control"
                     value={title}
                     onChange={handleChange}
-                    placeholder="Название продукта"
                 />
             </div>
 
             <div className="form-group">
+                <label className="text-center text-info">Краткое описание продукта</label>
                 <input
                     type="text"
                     name="description"
                     className="form-control"
                     value={description}
                     onChange={handleChange}
-                    placeholder="Краткое описание"
                 />
             </div>
 
             <div className="form-group">
+                <label className="text-center text-info">Полное описание продукта</label>
                 <input
                     type="text"
                     name="fullDescription"
                     className="form-control"
                     value={fullDescription}
                     onChange={handleChange}
-                    placeholder="Полное описание"
                 />
             </div>
 
             <div className="form-group">
+                <label className="text-center text-info">Цена</label>
                 <input
                     type="number"
                     name="price"
                     className="form-control"
                     value={price}
                     onChange={handleChange}
-                    placeholder="Цена"
                 />
             </div>
 
             <div className="form-group">
+                <label className="text-center text-info">Объём тары</label>
                 <h6 className="bg-danger text-center p-3">Внимание: объём тары должен быть указан в миллилитрах</h6>
                 <input
                     type="number"
@@ -84,22 +86,32 @@ const ProductUpdateForm = ({
                     className="form-control"
                     value={volume}
                     onChange={handleChange}
-                    placeholder="Объём"
                 />
             </div>
 
             <div className="form-group">
+                <label className="text-center text-info">Количество</label>
                 <input
                     type="number"
                     name="quantity"
                     className="form-control"
                     value={quantity}
                     onChange={handleChange}
-                    placeholder="Количество"
                 />
             </div>
 
-            <h6 className="text-center">Выбрать категорию</h6>
+            <div className="form-group">
+                <label className="text-center text-info">Номенклатурный номер</label>
+                <input
+                    type="text"
+                    name="nn"
+                    className="form-control"
+                    value={nn}
+                    onChange={handleChange}
+                />
+            </div>
+
+            <label className="text-center text-info">Выбрать категорию</label>
 
             <select
                 name="category"
@@ -117,7 +129,7 @@ const ProductUpdateForm = ({
             </select>
 
             <div>
-                <h6 className="mt-3 text-center">Выбрать подкатегорию</h6>
+                <label className="text-center text-info mt-4">Выбрать подкатегорию</label>
                 {/* <Select> of antd works not in the same way as HTML <select> tag. See comments in ProductUpdate component from line 47 */}
                 <Select
                     mode="multiple"

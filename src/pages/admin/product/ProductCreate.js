@@ -31,6 +31,7 @@ const ProductCreate = () => {
         price: "",
         volume: "",
         quantity: "",
+        nn: "",
         images: []
     }
 

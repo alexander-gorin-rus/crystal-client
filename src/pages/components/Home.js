@@ -52,8 +52,8 @@ export const Home = () => {
                     <img style={{ width: "100vw", height: "100vh", position: "fixed", top: "0%", left: "0%", zIndex: "-10" }} src={b.url} />
                 </div>
             ))}
-            {homePage.map((h) => (
-                <>
+            {homePage.map((h, i) => (
+                <div key={i}>
                     <p style={{ position: "relative", top: "0%", textAlign: "center" }} className=" h4 pt-4 mb-4" key={h._id}>{h.title}</p>
 
                     <ul style={{ listStyle: "none", background: "white", padding: "10px", width: "25vw", margin: "1vw", borderRadius: "10px" }} className="mt-4 homePageFonts" >
@@ -84,7 +84,7 @@ export const Home = () => {
                         </div>
                     </div>
 
-                </>
+                </div>
             ))}
         </div>
 
