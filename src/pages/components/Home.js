@@ -78,7 +78,7 @@ export const Home = () => {
                                 </Carousel>
                             </div>
 
-                            <p style={{ position: "absolute", top: "50vh", left: "45vw", width: "40vw", textAlign: "center", background: "#0011fc", margin: "40px", zIndex: "2", padding: "40px", color: "white", borderRadius: "10px" }} >{h.fullInfo}</p>
+                            <p className="full-info" >{h.fullInfo}</p>
 
 
                         </div>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { getProductsByCount, fetchProductsByFilter } from '../../../functions/product';
 import { getCategories } from '../../../functions/categories';
 import { getSubs } from '../../../functions/sub';
-import { useSelector } from 'react-redux';
+//import { useSelector } from 'react-redux';
 import UserProductCard from '../../components/cards/UserProductCard';
 import { volume } from '../forms/Data';
 import Checkbox from './Checkbox';
@@ -19,17 +19,17 @@ const SearchResult = () => {
     const [PostSize, setPostSize] = useState(0)
     const [Categories, setCategories] = useState([])
     const [Subs, setSubs] = useState([])
-    const [Error, setError] = useState(false)
+    //const [Error, setError] = useState(false)
     const [Filters, setFilters] = useState({
         category: [],
         subs: [],
         volume: [],
     });
-    const [loading, setLoading] = useState(false);
+    //const [loading, setLoading] = useState(false);
 
     //let dispatch = useDispatch();
-    let { search } = useSelector((state) => ({ ...state }));
-    const { text } = search;
+    //let { search } = useSelector((state) => ({ ...state }));
+    //const { text } = search;
 
 
     useEffect(() => {
@@ -42,7 +42,7 @@ const SearchResult = () => {
     const loadAllProducts = () => {
         getProductsByCount().then(p => {
             setProducts(p.data)
-            setLoading(false)
+            //setLoading(false)
         })
     }
 
@@ -112,7 +112,7 @@ const SearchResult = () => {
 
         showFilteredResults(newFilters)
         setFilters(newFilters)
-        setLoading(false)
+        //setLoading(false)
     }
 
     return (

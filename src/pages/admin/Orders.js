@@ -1,6 +1,5 @@
 import React from 'react';
 import ShowPaymentInfo from '../user/ShowPaymentInfo';
-import { Link } from 'react-router-dom';
 
 const Orders = ({ orders, handleStatusChange, deleteOrder }) => {
 

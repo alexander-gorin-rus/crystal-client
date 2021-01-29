@@ -15,7 +15,7 @@ const AdminDashboard = () => {
 
     useEffect(() => {
         loadOrders()
-    }, [])
+    },[])
 
     const loadOrders = () => getOrders(user.token).then((res) => {
         //console.log(JSON.stringify(res.data, null, 4))
