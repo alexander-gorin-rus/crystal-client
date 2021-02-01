@@ -16,7 +16,7 @@ import { useDispatch, useSelector } from 'react-redux';
 const { SubMenu, Item } = Menu;
 
 
-const Header = () => {
+const ManagerHeader = () => {
     const [current, setCurrent] = useState('');
 
     let dispatch = useDispatch();
@@ -41,22 +41,7 @@ const Header = () => {
 
     return (
         <Menu onClick={handleClick} selectedKeys={[current]} mode="horizontal">
-            <Item key="home" icon={<HomeOutlined />}>
-                <Link to="/">Главная</Link>
-            </Item>
-            <Item key="products" icon={<ShopOutlined />}>
-                <Link to="/products">Продукция</Link>
-            </Item>
-            <Item key="result" icon={<SearchOutlined />}>
-                <Link to="/result">Поиск продукции</Link>
-            </Item>
-            <Item key="cart" icon={<ShoppingCartOutlined />}>
-                <Link to="/cart">
-                    <Badge count={cart.length} offset={[9, 0]} >
-                        Корзина
-                    </Badge>
-                </Link>
-            </Item>
+           
             {!user && (
                 <Item key="register" icon={<UserAddOutlined />} className="float-right">
                     <Link to="/register">Зарегистрироваться</Link>
@@ -94,4 +79,4 @@ const Header = () => {
     )
 }
 
-export default Header
+export default ManagerHeader

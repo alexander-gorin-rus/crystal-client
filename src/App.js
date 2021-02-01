@@ -1,6 +1,7 @@
 import React, { useEffect, lazy, Suspense } from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
+
 import "react-toastify/dist/ReactToastify.css";
 
 // //components
@@ -44,12 +45,13 @@ import "react-toastify/dist/ReactToastify.css";
 
 import { auth } from './firebase';
 import { currentUser } from './functions/auth';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { LoadingOutlined } from '@ant-design/icons'
 //import { AdminInvoice1 } from './pages/admin/AdminInvoice1';
 
 //components
 const Header = lazy(() => import('./pages/components/navigation/Header'));
+//const ManagerHeader = lazy(() => import('./pages/components/navigation/ManagerHeader'))
 const SideDrawer = lazy(() => import('./pages/components/drawer/SideDrawer'));
 const Home = lazy(() => import('./pages/components/Home'));
 const Register = lazy(() => import('./pages/auth/Register'));
@@ -62,6 +64,8 @@ const Category = lazy(() => import('./pages/category/Category'));
 const Sub = lazy(() => import('./pages/sub/Sub'));
 const SearchResult = lazy(() => import('./pages/components/products/SearchResult'));
 const Cart = lazy(() => import('./pages/components/cart/Cart'));
+const Manager = lazy(() => import('./pages/manager/Manager'));
+
 
 
 
@@ -71,6 +75,9 @@ const Password = lazy(() => import('./pages/user/Password'));
 const Wishlist = lazy(() => import('./pages/user/Wishlist'));
 const History = lazy(() => import('./pages/user/History'));
 const Checkout = lazy(() => import('./pages/components/cart/Checkout'));
+
+//manager route
+const ManagerRoute = lazy(() => import('./pages/components/privateRoutes/ManagerRoute'))
 
 //admin routes
 const AdminRoute = lazy(() => import('./pages/components/privateRoutes/AdminRoute'));
@@ -96,6 +103,21 @@ const AdminInvoice1 = lazy(() => import('./pages/admin/AdminInvoice1'));
 const App = () => {
   const dispatch = useDispatch();
 
+  //const { user } = useSelector((state) => ({ ...state }));
+
+  // const RoleHeader = () => {
+  //   if(user.role === 'manager'){
+  //     return(
+  //       <div>
+  //         <ManagerHeader />
+  //       </div>
+  //     )
+  //   }else{
+  //     return(
+  //       <div><Header /></div>
+  //     )
+  //   }
+  // }
 
   //check firebase authentication state
   useEffect(() => {
@@ -130,6 +152,7 @@ const App = () => {
         <div className="text-center mt-5"><LoadingOutlined />__ Производственная Компания "Crystal"__<LoadingOutlined /> </div>
       }>
         <Header />
+        {/* {RoleHeader()} */}
         <SideDrawer />
         <ToastContainer />
         <Switch>
@@ -150,6 +173,9 @@ const App = () => {
           <UserRoute path="/user/password" exact component={Password} />
           <UserRoute path="/user/wishlist" exact component={Wishlist} />
           <UserRoute path="/checkout" exact component={Checkout} />
+
+          {/* MANAGER ROUTE */}
+          <ManagerRoute path="/manager" exact component={Manager} />
 
           {/* ADMIN ROUTES */}
           <AdminRoute path="/admin/background-create" exact component={BackgroundPageCreate} />

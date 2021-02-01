@@ -19,7 +19,10 @@ export const Login = ({ history }) => {
     const roleBaseRedirect = (res) => {
         if (res.data.role === 'admin') {
             history.push('/admin/dashboard')
-        } else {
+        } else if(res.data.role === 'manager') {
+            history.push('/manager')
+        }
+        else {
             history.push('/user/history')
         }
     }

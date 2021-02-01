@@ -6,7 +6,7 @@ import LocalSearch from '../../components/forms/LocalSearch';
 import { toast } from 'react-toastify';
 import { useSelector } from 'react-redux';
 import { createCategory, getCategories, removeCategory } from '../../../functions/categories';
-import { getSubs } from '../../../functions/sub';
+//import { getSubs } from '../../../functions/sub';
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
 
 const CategoryCreate = () => {
@@ -15,7 +15,7 @@ const CategoryCreate = () => {
     const [name, setName] = useState("");
     const [loading, setLoading] = useState(false);
     const [categories, setCategories] = useState([]);
-    const [subs, setSubs] = useState([]);
+    //const [subs, setSubs] = useState([]);
 
 
     //This state is for searching and filtering categories. The whole search func consists of several steps
@@ -24,14 +24,14 @@ const CategoryCreate = () => {
 
     useEffect(() => {
         loadCategories();
-        loadSubs()
+        //loadSubs()
     }, [])
 
     const loadCategories = () =>
         getCategories().then(c => setCategories(c.data));
 
-    const loadSubs = () =>
-        getSubs().then(c => setSubs(c.data));
+    // const loadSubs = () =>
+    //     getSubs().then(c => setSubs(c.data));
 
     const handleSubmit = (e) => {
         e.preventDefault();

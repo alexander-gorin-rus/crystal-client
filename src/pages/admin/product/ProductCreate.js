@@ -4,7 +4,8 @@ import ProductCreateForm from '../../components/forms/ProductCreateForm';
 import FileUpload from '../../components/forms/FileUpload';
 import { toast } from 'react-toastify';
 import { useSelector } from 'react-redux';
-import { getCategories, getCategorySubs } from '../../../functions/categories';
+//import { getCategories, getCategorySubs } from '../../../functions/categories';
+import { getCategories } from '../../../functions/categories';
 import { createProduct } from '../../../functions/product';
 import { LoadingOutlined } from '@ant-design/icons';
 
@@ -27,7 +28,7 @@ const ProductCreate = () => {
         fullDescription: "",
         category: "",
         categories: [],
-        subs: [],
+        //subs: [],
         price: "",
         volume: "",
         quantity: "",
@@ -36,8 +37,8 @@ const ProductCreate = () => {
     }
 
     const [values, setValues] = useState(initialState);
-    const [subOptions, setSubOptions] = useState([]);
-    const [showSub, setShowSub] = useState(false);
+    //const [subOptions, setSubOptions] = useState([]);
+    //const [showSub, setShowSub] = useState(false);
     const [loading, setLoading] = useState(false)
 
     const { user } = useSelector((state) => ({ ...state }));
@@ -63,13 +64,13 @@ const ProductCreate = () => {
         e.preventDefault();
         console.log('the choosen category', e.target.value);
         setValues({ ...values, subs: [], category: e.target.value });
-        getCategorySubs(e.target.value)
-            .then(res => {
-                console.log('sub category options', res)
-                setSubOptions(res.data);
-                setShowSub(true)
-            })
-            .catch()
+        // getCategorySubs(e.target.value)
+        //     .then(res => {
+        //         console.log('sub category options', res)
+        //         setSubOptions(res.data);
+        //         setShowSub(true)
+        //     })
+        //     .catch()
     }
 
     return (
@@ -95,8 +96,8 @@ const ProductCreate = () => {
                         handleCategoryChange={handleCategoryChange}
                         values={values}
                         setValues={setValues}
-                        subOptions={subOptions}
-                        showSub={showSub}
+                        // subOptions={subOptions}
+                        // showSub={showSub}
                     />
                 </div>
             </div>

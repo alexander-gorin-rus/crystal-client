@@ -9,7 +9,7 @@ const ProductUpdateForm = ({
     handleCategoryChange,
     setValues,
     // showSub, 
-    subOptions,
+    //subOptions,
     arrayOfSubs,
     setArrayOfSubs,
     selectedCategory,
@@ -22,12 +22,13 @@ const ProductUpdateForm = ({
         description,
         fullDescription,
         category,
-        subs,
+        //subs,
         price,
         volume,
         quantity,
         nn,
-        images } = values;
+        //images 
+    } = values;
 
 
     return (
@@ -128,9 +129,9 @@ const ProductUpdateForm = ({
                         </option>)}
             </select>
 
-            <div>
+            {/* <div>
                 <label className="text-center text-info mt-4">Выбрать подкатегорию</label>
-                {/* <Select> of antd works not in the same way as HTML <select> tag. See comments in ProductUpdate component from line 47 */}
+                <Select> of antd works not in the same way as HTML <select> tag. See comments in ProductUpdate component from line 47
                 <Select
                     mode="multiple"
                     style={{ width: "100%" }}
@@ -147,7 +148,7 @@ const ProductUpdateForm = ({
                         </Option>))}
 
                 </Select>
-            </div>
+            </div> */}
 
 
             <button className="btn btn-outline-info mt-4">Отправить</button>

@@ -7,6 +7,15 @@ export const orderDelete = async (_id, authtoken) =>
                 authtoken
             }
         }
+    );
+
+export const orderManagerDelete = async (_id, authtoken) =>
+    axios.delete(`${process.env.REACT_APP_API}/order/manager/delete/${_id}`,
+        {
+            headers: {
+                authtoken
+            }
+        }
     )
 
 export const readOrder = async (_id) => 

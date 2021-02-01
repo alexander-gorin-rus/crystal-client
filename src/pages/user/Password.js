@@ -18,9 +18,9 @@ const Password = () => {
                 setPassword("")
                 toast.success('Пароль успешно обновлен');
             })
-            .catch(err => {
+            .catch(res => {
                 setLoading(false);
-                toast.error('Не удалось обновить пароль')
+                toast.error('Не удалось обновить пароль. Пожалуйста, выдите из своего профиля и войдите вновь', res.error )
             });
     }
 
@@ -50,10 +50,6 @@ const Password = () => {
                     <div className="col">
                         {loading ? (<h4 className="text-center text-danger">Loading</h4>) : (<h4 className="text-center">Изменить пароль</h4>)}
                         {passwordUpdateForm()}
-                    </div>
-                    <div className="m-4">
-                        <h6>Уважаемый пользователь, если при попытке изменить пароль у вас появляется всплывающее окно,
-                            с текстом о неудачной попытке обновить пароль, вам необходимо выйти из вашего профиля, затем войти вновь и повторить попытку обновления пароля. Спасибо</h6>
                     </div>
                 </div>
             </div>

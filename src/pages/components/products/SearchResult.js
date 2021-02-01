@@ -7,7 +7,7 @@ import UserProductCard from '../../components/cards/UserProductCard';
 import { volume } from '../forms/Data';
 import Checkbox from './Checkbox';
 import Radiobox from './Radiobox';
-import SubCheckbox from './SubCheckbox';
+//import SubCheckbox from './SubCheckbox';
 
 
 //see Shop component
@@ -18,7 +18,7 @@ const SearchResult = () => {
     const [Limit, setLimit] = useState(6)
     const [PostSize, setPostSize] = useState(0)
     const [Categories, setCategories] = useState([])
-    const [Subs, setSubs] = useState([])
+    //const [Subs, setSubs] = useState([])
     //const [Error, setError] = useState(false)
     const [Filters, setFilters] = useState({
         category: [],
@@ -35,7 +35,7 @@ const SearchResult = () => {
     useEffect(() => {
         loadAllProducts();
         getCategories().then((res) => setCategories(res.data));
-        getSubs().then((res) => setSubs(res.data));
+        //getSubs().then((res) => setSubs(res.data));
     }, []);
 
     //1. load product by default
@@ -127,7 +127,7 @@ const SearchResult = () => {
                             list={Categories}
                             handleFilters={filters => handleFilters(filters, 'category')} />
                     </ul>
-                    <h6 style={{ textAlign: "center", color: "#0f8200" }}>подкатерогиям:</h6>
+                    {/* <h6 style={{ textAlign: "center", color: "#0f8200" }}>подкатерогиям:</h6>
 
                     <p style={{ color: "#1010e8", textAlign: "center", fontSize: "0.7rem" }}>
                         <p style={{ color: "#f50707", fontSize: "0.8rem" }}>Внимание!</p>  Выбирайте товар либо в меню категории, либо в меню подкатерогии
@@ -136,7 +136,7 @@ const SearchResult = () => {
                         <SubCheckbox
                             list={Subs}
                             handleFilters={filters => handleFilters(filters, 'subs')} />
-                    </ul>
+                    </ul> */}
                     <div className='p-3'>
                         <h6 style={{ textAlign: "center", color: "#0f8200" }}>объему тары:</h6>
                         <Radiobox list={volume}

@@ -29,3 +29,13 @@ export const currentAdmin = async (authtoken) => {
             }
         });
 }
+
+export const currentManager = async (authtoken) => {
+    return await axios.post(`${process.env.REACT_APP_API}/current-manager`,
+        {},
+        {
+            headers: {
+                authtoken,
+            }
+        });
+}

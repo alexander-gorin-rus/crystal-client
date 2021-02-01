@@ -1,22 +1,26 @@
 import React from 'react'
-import { Select } from 'antd';
+//import { Select } from 'antd';
 
-const { Option } = Select;
+//const { Option } = Select;
 
-const ProductCreateForm = ({ handleChange, handleSubmit, handleCategoryChange, setValues, showSub, subOptions, values }) => {
+const ProductCreateForm = ({ handleChange, handleSubmit, handleCategoryChange, setValues,  values }) => {
+
+    //showSub, subOptions, (insert them when sub categories will be nessesary as props)
+
 
     const {
         title,
         description,
         fullDescription,
-        category,
+        //category,
         categories,
-        subs,
+        //subs,
         price,
         volume,
         quantity,
         nn,
-        images } = values;
+        //images 
+    } = values;
     return (
         <form onSubmit={handleSubmit}>
 
@@ -115,7 +119,7 @@ const ProductCreateForm = ({ handleChange, handleSubmit, handleCategoryChange, s
                         </option>)}
             </select>
 
-            { showSub && (
+            {/* { showSub && (
                 <div>
                     <h6 className="mt-3 text-center">Выбрать подкатегорию</h6>
                     <Select
@@ -135,7 +139,7 @@ const ProductCreateForm = ({ handleChange, handleSubmit, handleCategoryChange, s
 
                     </Select>
                 </div>
-            )}
+            )} */}
 
             <button className="btn btn-outline-info mt-4">Отправить</button>
 
