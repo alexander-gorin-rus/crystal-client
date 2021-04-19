@@ -3,9 +3,9 @@ import imageDefault from '../../../images/image_1.jpg';
 import { Card, Tooltip } from 'antd';
 import { EyeOutlined, ShoppingCartOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
-import { showAverage } from '../../../functions/rating';
+//import { showAverage } from '../../../functions/rating';
 import _ from 'lodash';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 const { Meta } = Card
 
@@ -13,7 +13,7 @@ const UserProductCard = ({ product }) => {
 
     //redux
     const dispatch = useDispatch();
-    const { user, cart } = useSelector((state) => ({ ...state }));
+    //const { user, cart } = useSelector((state) => ({ ...state }));
 
     const [tooltip, setTooltip] = useState('Добавить в корзину')
     const [addToCart, setAddToCart] = useState("Add to cart")
@@ -59,16 +59,10 @@ const UserProductCard = ({ product }) => {
         }
     }
 
-    // useEffect(() => {
-    //     cartAdded()
-    // }, [])
-
-    // const cartAdded = () => {
-    //     addToCart
-    // }
-
     return (
         <>
+            {/* Rating section disabled */}
+
             {/* {product && product.ratings && product.ratings.length > 0 ? (
                 showAverage(product)
             ) : (
@@ -78,30 +72,32 @@ const UserProductCard = ({ product }) => {
             <Card
                 cover={
                     <img src={images && images.length ? images[0].url : imageDefault}
-                        style={{ height: '150px', objectFit: "cover" }}
-                        className="p-1"
+                        style={{ objectFit: "cover" }}
+                        className="p-1 product-cart-image"
                     />
 
                 }
                 actions={[
                     <Link to={`/product/${slug}`} >
-                        <EyeOutlined className="text-warning" /> <br /> <p className="text-warning">Подробнее о продукте</p>
+                        <EyeOutlined className="text-warning" /> <br /> 
+                        <p className="text-warning custom-font-size-small">Подробнее о продукте</p>
                     </Link>,
                     <Tooltip title={tooltip}>
-                        <Link onClick={handleAddToCart} disabled={product.quantity < 1}>
+                        <div onClick={handleAddToCart} disabled={product.quantity < 1}>
                             <br />
                             {product.quantity < 1 ? (
-                                "На складе этот товар отсутствует"
+                                <p className="custom-font-size-small"> Этот товар на складе отсутствует</p>
                             ) : (
                                     <>
                                         <ShoppingCartOutlined
                                             className="text-danger"
                                         />
-                                        <p style={{ color: "red" }} disabled={addToCart === 'In cart'} >Добавить в корзину</p>
-                                        {/* {addToCart === 'In cart' ? (<p>In Cart</p>) : (<p>Add to Cart</p>)} */}
+                                        <p style={{ color: "red" }} 
+                                            disabled={addToCart === 'In cart'} 
+                                            className="custom-font-size-small" >Добавить в корзину</p>
                                     </>
                                 )}
-                        </Link>
+                        </div>
                     </Tooltip>
                 ]}
             >

@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import { Card, Tooltip } from 'antd';
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 import { ShoppingCartOutlined } from '@ant-design/icons';
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import DefaultImage from '../../../images/image_1.jpg'
 import ProductListItems from './ProductListItems';
-import { showAverage } from '../../../functions/rating';
+//import { showAverage } from '../../../functions/rating';
 import _ from 'lodash';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
-//see from 133
+// Rating modal disabled
 // import StarRating from 'react-star-ratings';
 // import RatingModal from '../modal/RatingModal';
 
@@ -20,15 +20,15 @@ import { useSelector, useDispatch } from 'react-redux';
 const DetailedProduct = ({ product }) => {
 
     const dispatch = useDispatch();
-    const { user, cart } = useSelector((state) => ({ ...state }))
 
-    const [added, setAdded] = useState(false);
+    //const { user, cart } = useSelector((state) => ({ ...state }))
+
     const [tooltip, setTooltip] = useState('Добавить в корзину');
 
     const {
         title,
         images,
-        _id
+        //_id
     } = product
 
     const handleAddToCart = () => {
@@ -59,7 +59,6 @@ const DetailedProduct = ({ product }) => {
                 type: "SET_VISIBLE",
                 payload: true
             });
-            setAdded(true)
         }
     }
 
@@ -69,13 +68,13 @@ const DetailedProduct = ({ product }) => {
             <div className="col-md-5" >
                 {images && images.length ? (
                     <Carousel showArrows={true} autoPlay infiniteLoop >
-                        {images && images.map((i) => <img src={i.url} key={i.public_id} />)}
+                        {images && images.map((i) => <img src={i.url} key={i.public_id} alt="product" />)}
                     </Carousel>
                 ) : (
                         <Card
                             cover={
                                 <img src={DefaultImage}
-                                    className="pb-4" />
+                                    className="pb-4" alt="product_image" />
 
                             }
                         />
@@ -84,29 +83,28 @@ const DetailedProduct = ({ product }) => {
             </div>
             <div className="col-md-7">
                 <h4 className="bg-info p-3 text-center">{title}</h4>
-                <h6 className="text-center">Рейтинг продукта:</h6>
-                {product && product.ratings && product.ratings.length > 0 ? showAverage(product) : (<p className="text-center text-warning" style={{ fontSize: "0.7rem" }}>Этому товару рейтинг пока не выставлен. Вы можете приобрести этот продукт и поставить ему оценку</p>)}
+
+                {/* Rating section disabled */}
+                {/* <h6 className="text-center">Рейтинг продукта:</h6>
+                {product && product.ratings && product.ratings.length > 0 ? showAverage(product) : 
+                (<p className="text-center text-warning" style={{ fontSize: "0.7rem" }}>Этому товару рейтинг пока не выставлен. Вы можете приобрести этот продукт и поставить ему оценку</p>)} */}
                 <Card
                     actions={[
                         <>
                             <Tooltip title={tooltip}>
-                                <Link onClick={handleAddToCart}>
-                                    {/* {added ? (
-                                        <>
-                                            <ShoppingCartOutlined className="text-success" /> <br />
-                                            <p style={{ color: "green" }}>Товар добавлен в корзину</p>
-                                        </>
-                                    ) : (
+                                <div onClick={handleAddToCart}>
+                                    <>
+                                        {product.quantity === 0 ? (
+                                            <p>Этот товар на складе отсутствует</p>
+                                        ) : (
                                             <>
                                                 <ShoppingCartOutlined className="text-danger" /> <br />
                                                 <p style={{ color: "red" }}>Добавить в корзину</p>
                                             </>
-                                        )} */}
-                                    <>
-                                        <ShoppingCartOutlined className="text-danger" /> <br />
-                                        <p style={{ color: "red" }}>Добавить в корзину</p>
+                                        )}
+                                        
                                     </>
-                                </Link>
+                                </div>
                             </Tooltip>
 
                             {/* <Link to="/">

@@ -24,7 +24,6 @@ const Header = () => {
     let history = useHistory();
 
     const handleClick = (e) => {
-        //console.log(e.key)
         setCurrent(e.key);
     }
 
@@ -39,7 +38,7 @@ const Header = () => {
     }
 
     return (
-        <Menu onClick={handleClick} selectedKeys={[current]} mode="horizontal">
+        <Menu className="custom-header" onClick={handleClick} selectedKeys={[current]} mode="horizontal">
             <Item key="home" icon={<HomeOutlined />}>
                 <Link to="/">Главная</Link>
             </Item>
@@ -69,7 +68,9 @@ const Header = () => {
             )}
 
             {user && (
-                <SubMenu icon={<UserOutlined />} title={user.email && user.email.split('@')[0]} className="float-right">
+                <SubMenu icon={<UserOutlined />} 
+                    title={user.email && user.email.split('@')[0]} 
+                    className="float-right mr-5">
                     {user && user.role === 'subscriber' && (
                         <Item>
                             <Link to="/user/history">Моя страница</Link>

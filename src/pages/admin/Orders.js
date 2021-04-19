@@ -35,7 +35,7 @@ const Orders = ({ orders, handleStatusChange, deleteOrder }) => {
         <>
             {orders.map((order) => (
                 <div key={order._id} className="row pb-5">
-                    { order.orderStatus === "Canceled" ? (<button className="bg-danger" style={{ width: "150px", marginLeft: "auto", marginRight: "auto" }} onClick={deleteOrder(order._id)}>Удалить заказ</button>) : (<p></p>)}
+                    { order.orderStatus === "Canceled" ? (<button className="bg-danger" style={{ width: "150px", marginLeft: "auto", marginRight: "auto" }} onClick={() => deleteOrder(order._id)}>Удалить заказ</button>) : (<p></p>)}
                     <div className="btn btn-block">
                         <ShowPaymentInfo order={order} />
                         <div className="row">

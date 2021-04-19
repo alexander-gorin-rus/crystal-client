@@ -127,16 +127,21 @@ const SearchResult = () => {
                             list={Categories}
                             handleFilters={filters => handleFilters(filters, 'category')} />
                     </ul>
-                    <h6 style={{ textAlign: "center", color: "#0f8200" }}>подкатерогиям:</h6>
 
-                    <p style={{ color: "#1010e8", textAlign: "center", fontSize: "0.7rem" }}>
+                    {/* Subcategories section is disabled right now but will be uncommented when 
+                    the products list is big enough for that. Also see './pages/components/ProductsPage' 38 line */}
+
+
+                {/* <h6 style={{ textAlign: "center", color: "#0f8200" }}>подкатерогиям:</h6>
+
+                     <p style={{ color: "#1010e8", textAlign: "center", fontSize: "0.7rem" }}>
                         <p style={{ color: "#f50707", fontSize: "0.8rem" }}>Внимание!</p>  Выбирайте товар либо в меню категории, либо в меню подкатерогии
                         </p>
                     <ul>
                         <SubCheckbox
                             list={Subs}
                             handleFilters={filters => handleFilters(filters, 'subs')} />
-                    </ul>
+                    </ul> */}
                     <div className='p-3'>
                         <h6 style={{ textAlign: "center", color: "#0f8200" }}>объему тары:</h6>
                         <Radiobox list={volume}

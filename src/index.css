@@ -17,6 +17,23 @@
     animation: Gradient 15s ease infinite;
 }
 
+.custom-home-page{
+    position: absolute; 
+    top: 10vh; 
+    left: 0%;
+    width: 100vw; 
+    height: 100vh;
+}
+
+.custom-background-image{
+    width: 100vw; 
+    height: 100vh; 
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    z-index: -10;
+}
+
 @media (max-width: 1000px){
 .mediaQuery{
     font-size: 0.7em; 
@@ -28,6 +45,18 @@
     height: 65vh;
     width: 20vw;
     object-fit: cover;
+}
+
+.custom-font-size-small{
+    font-size: 0.7rem;
+}
+
+.product-cart-image{
+    width: auto;
+}
+
+.custom-header{
+    width: 100vw;
 }
 @-webkit-keyframes Gradient {
     0% {
@@ -77,9 +106,75 @@
     font-family: 'Dancing Script', cursive;
 }
 
+.home-page-optional-text{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    font-size: 1rem;
+}
 
 .homePageFonts{
     font-size: 0.9rem;
+}
+
+.company-title{
+    position: relative; 
+    top: 0%; 
+    text-align: center;
+}
+
+.company-contacts{
+    list-style: none; 
+    background: white;
+    padding: 10px;
+    width: 25vw;
+    margin: 1vw; 
+    border-radius: 10px;
+}
+
+.main-container-adsolute{
+    position: relative;
+    top: 10vh;
+    width: 100vw;
+}
+
+.main-container-relative{
+    position: "relative";
+    top: 0%;
+    left: 0%;
+    width: 100vw;
+    height: 100vh;
+}
+
+.custom-carousel{
+    margin: auto;
+    width: 60%;
+    height: 100%;
+}
+
+@media(max-width: 950px){
+    .custom-carousel{
+        width: 80%;
+    }
+    .company-full-info{
+        left: 0% !important;
+        width: 90vw !important;
+    }
+}
+
+.company-full-info{
+    position: absolute;
+    top: 50vh;
+    left: 45vw;
+    width: 40vw;
+    text-align: center;
+    background: #0011fc;
+    margin: 40px;
+    z-index: 2;
+    padding: 40px;
+    color: white;
+    border-radius: 10px;
 }
 
 @media (max-width: 900px){

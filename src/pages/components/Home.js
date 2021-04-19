@@ -24,7 +24,6 @@ export const Home = () => {
 
     useEffect(() => {
         getHomePage().then((res) => setHomePage(res.data))
-        //console.log(JSON.stringify(homePage, null, 4))
     }, []);
 
     useEffect(() => {
@@ -36,27 +35,21 @@ export const Home = () => {
 
 
     return (
-        <div style={{ position: "absolute", top: "10vh", left: "0%", width: "100vw", height: "100vh" }}>
-            {backImage.map((b, i) => (
-                <div key={i}>
+        <div className="custom-home-page">
+            {backImage.map((b) => (
+                <div key={b._id}>
                     <div
-                        style={{
-                            display: "block",
-                            marginLeft: "auto",
-                            marginRight: "auto",
-                            width: "80%",
-                            fontSize: "1rem"
-                        }} className="backImageFonts">
+                        className="backImageFonts home-page-optional-text">
                         {b.text && b.text.length ? b.text : ""}
                     </div>
-                    <img style={{ width: "100vw", height: "100vh", position: "fixed", top: "0%", left: "0%", zIndex: "-10" }} src={b.url} />
+                    <img className="custom-background-image" src={b.url} alt="home-page-background" />
                 </div>
             ))}
             {homePage.map((h) => (
                 <>
-                    <p style={{ position: "relative", top: "0%", textAlign: "center" }} className=" h4 pt-4 mb-4" key={h._id}>{h.title}</p>
+                    <p className=" h4 pt-4 mb-4 company-title" key={h._id}>{h.title}</p>
 
-                    <ul style={{ listStyle: "none", background: "white", padding: "10px", width: "25vw", margin: "1vw", borderRadius: "10px" }} className="mt-4 homePageFonts" >
+                    <ul className="mt-4 homePageFonts company-contacts" >
                         <li >{h.address}</li>
                         <li>{h.email}</li>
                         <li>{h.phone}</li>
@@ -66,19 +59,19 @@ export const Home = () => {
                         <Jumbotron text={h.info} />
                     </div>
 
-                    <div style={{ position: "relative", top: "10vh", width: "100vw" }}>
-                        <div style={{ position: "relative", top: "0%", left: "0%", width: "100vw", height: "100vh", }} >
+                    <div className="main-container-adsolute">
+                        <div className="main-container-relative" >
 
-                            <div style={{ margin: "auto", width: "60%", height: "100%" }} >
+                            <div className="custom-carousel" >
                                 <Carousel autoPlay infiniteLoop >
-                                    {slidesList.map((s, i) => (
+                                    {slidesList.map((s) => (
 
-                                        <img style={{ borderRadius: "10px" }} key={i} src={s.url} alt='info' />
+                                        <img style={{ borderRadius: "10px" }} key={s._id} src={s.url} alt='info' />
                                     ))}
                                 </Carousel>
                             </div>
 
-                            <p style={{ position: "absolute", top: "50vh", left: "45vw", width: "40vw", textAlign: "center", background: "#0011fc", margin: "40px", zIndex: "2", padding: "40px", color: "white", borderRadius: "10px" }} >{h.fullInfo}</p>
+                            <p className='company-full-info' >{h.fullInfo}</p>
 
 
                         </div>

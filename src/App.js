@@ -3,45 +3,6 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 
-// //components
-// import Header from './pages/components/navigation/Header';
-// import SideDrawer from './pages/components/drawer/SideDrawer';
-// import Home from './pages/components/Home';
-// import Register from './pages/auth/Register';
-// import RegisterComplete from './pages/auth/RegisterComplete';
-// import Login from './pages/auth/Login';
-// import ForgotPassword from './pages/auth/ForgotPassword';
-// import ProductsPage from './pages/components/ProductsPage';
-// import GetSingleProduct from './pages/components/products/GetSIngleProduct';
-// import Category from './pages/category/Category';
-// import Sub from './pages/sub/Sub';
-// import SearchResult from './pages/components/products/SearchResult';
-// import Cart from './pages/components/cart/Cart';
-
-
-
-// //user routers
-// import UserRoute from './pages/components/privateRoutes/UserRoute';
-// import Password from './pages/user/Password';
-// import Wishlist from './pages/user/Wishlist';
-// import History from './pages/user/History';
-// import Checkout from './pages/components/cart/Checkout';
-
-// //admin routes
-// import AdminRoute from './pages/components/privateRoutes/AdminRoute';
-// import AdminDashboard from './pages/admin/AdminDashboard';
-// import CategoryCreate from './pages/admin/category/CategoryCreate';
-// import CategoryUpdate from './pages/admin/category/CategoryUpdate';
-// import SubCreate from './pages/admin/sub/SubCreate';
-// import SubUpdate from './pages/admin/sub/SubUpdate';
-// import ProductCreate from './pages/admin/product/ProductCreate';
-// import ManageProducts from './pages/admin/product/ManageProducts';
-// import ProductUpdate from './pages/admin/product/ProductUpdate';
-// import CreateCouponPage from './pages/admin/coupon/CreateCouponPage';
-// import AdminHomeUpade from './pages/components/AdminHomeUpade'
-// import HomePageUpdate from './pages/components/HomePageUpdate';
-// import HomePageCreate from './pages/admin/homePage/HomePageCreate';
-
 import { auth } from './firebase';
 import { currentUser } from './functions/auth';
 import { useDispatch } from 'react-redux';

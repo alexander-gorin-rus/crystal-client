@@ -11,7 +11,7 @@ const ProductListItems = ({ product }) => {
         volume,
         quantity,
         category,
-        subs,
+        //subs,
         sold
     } = product
     return (
@@ -42,7 +42,9 @@ const ProductListItems = ({ product }) => {
                     </li>
                 )}
 
-                {subs && (
+                {/* Subcategories section disabled */}
+
+                {/* {subs && (
                     <li className="list-group-item">
                         Подкатегории:
                         {subs.map((s) => (
@@ -52,7 +54,7 @@ const ProductListItems = ({ product }) => {
                             </Link>
                         ))}
                     </li>
-                )}
+                )} */}
 
                 <li className="list-group-item">
                     Количество на складе:
