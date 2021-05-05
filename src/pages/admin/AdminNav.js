@@ -40,10 +40,10 @@ const AdminNav = () => {
                 <div className="bg-primary" style={{ height: "2px" }} ></div>
 
 
-                <li className="nav-item">
+                {/* <li className="nav-item">
                     <Link to="/admin/sub" className="nav-link">Создать, или <p className="text-danger">изменить/удалить</p> подкатегорию</Link>
                 </li>
-                <div className="bg-primary" style={{ height: "2px" }} ></div>
+                <div className="bg-primary" style={{ height: "2px" }} ></div> */}
 
 
                 <li className="nav-item">

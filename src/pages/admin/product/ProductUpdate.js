@@ -26,10 +26,10 @@ const ProductUpdate = ({ match, history }) => {
 
     const [values, setValues] = useState(initialState);
     const [categories, setCategories] = useState([])
-    const [subOptions, setSubOptions] = useState([]);
+    //const [subOptions, setSubOptions] = useState([]);
     const [arrayOfSubs, setArrayOfSubs] = useState([])
     const [selectedCategory, setSelectedCategory] = useState("")
-    const [showSub, setShowSub] = useState(false);
+    //const [showSub, setShowSub] = useState(false);
     const [loading, setLoading] = useState(false)
 
     //router
@@ -51,17 +51,17 @@ const ProductUpdate = ({ match, history }) => {
                 //step 1 is to get single product
                 setValues({ ...values, ...p.data });
                 //step 2 load single product category subs
-                getCategorySubs(p.data.category._id)
-                    .then(res => {
-                        setSubOptions(res.data) //on first load, show default subs
-                    });
-                //step 3 prepare array of subs ids to show as default sub values in antd Select
-                let arr = [];
-                p.data.subs.map((s) => {
-                    arr.push(s._id);
-                });
-                console.log("sub ids are", arr)
-                setArrayOfSubs((prev) => arr) //required for antd design <Select> to work
+                // getCategorySubs(p.data.category._id)
+                //     .then(res => {
+                //         setSubOptions(res.data) //on first load, show default subs
+                //     });
+                // //step 3 prepare array of subs ids to show as default sub values in antd Select
+                // let arr = [];
+                // p.data.subs.map((s) => {
+                //     arr.push(s._id);
+                // });
+                // console.log("sub ids are", arr)
+                // setArrayOfSubs((prev) => arr) //required for antd design <Select> to work
             })
     }
 
@@ -105,12 +105,12 @@ const ProductUpdate = ({ match, history }) => {
 
         setSelectedCategory(e.target.value);
 
-        getCategorySubs(e.target.value)
-            .then(res => {
-                console.log('sub category options', res)
-                setSubOptions(res.data);
-                //setShowSub(true)
-            });
+        // getCategorySubs(e.target.value)
+        //     .then(res => {
+        //         console.log('sub category options', res)
+        //         setSubOptions(res.data);
+        //         //setShowSub(true)
+        //     });
 
         //if admin clicks back to the original category
         //show its sub categories in default
@@ -119,7 +119,7 @@ const ProductUpdate = ({ match, history }) => {
         }
 
         //Clear old sub category id
-        setArrayOfSubs([]);
+        //setArrayOfSubs([]);
     }
 
     return (
@@ -144,7 +144,7 @@ const ProductUpdate = ({ match, history }) => {
                             values={values}
                             setValues={setValues}
                             categories={categories}
-                            subOptions={subOptions}
+                            //subOptions={subOptions}
                             arrayOfSubs={arrayOfSubs}
                             setArrayOfSubs={setArrayOfSubs}
                             selectedCategory={selectedCategory}

@@ -4,6 +4,8 @@ import { getSlides } from '../../functions/homePageSlider';
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Jumbotron from '../components/cards/Jumbotron';
+import Aos from 'aos';
+import "aos/dist/aos.css";
 
 
 export const Home = () => {
@@ -33,6 +35,9 @@ export const Home = () => {
             console.log(err))
     }, []);
 
+    useEffect(() => {
+        Aos.init({duration: 2000});
+    },[])
 
     return (
         <div className="custom-home-page">
@@ -47,22 +52,13 @@ export const Home = () => {
             ))}
             {homePage.map((h) => (
                 <>
-                    <p className=" h4 pt-4 mb-4 company-title" key={h._id}>{h.title}</p>
-
-                    <ul className="mt-4 homePageFonts company-contacts" >
-                        <li >{h.address}</li>
-                        <li>{h.email}</li>
-                        <li>{h.phone}</li>
-                    </ul>
-
                     <div className=" h2 font-weight-bold text-center textInfo" style={{ zIndex: "20" }}>
                         <Jumbotron text={h.info} />
                     </div>
 
-                    <div className="main-container-adsolute">
-                        <div className="main-container-relative" >
+                    <p className=" h4 pt-4 mb-4 company-title"  data-aos="flip-left" key={h._id}>{h.title}</p>
 
-                            <div className="custom-carousel" >
+                            <div className="custom-carousel" data-aos="fade-right">
                                 <Carousel autoPlay infiniteLoop >
                                     {slidesList.map((s) => (
 
@@ -71,11 +67,11 @@ export const Home = () => {
                                 </Carousel>
                             </div>
 
-                            <p className='company-full-info' >{h.fullInfo}</p>
-
-
-                        </div>
-                    </div>
+                            <p className='company-full-info' data-aos="fade-left">{h.fullInfo}</p>
+                            
+                            <p className="address" data-aos="fade-zoom-in">{h.address}</p>
+                            <p className="email" data-aos="fade-zoom-in">{h.email}</p>
+                            <p className="phone" data-aos="fade-zoom-in">{h.phone}</p>
 
                 </>
             ))}

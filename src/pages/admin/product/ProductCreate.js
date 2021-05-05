@@ -36,7 +36,7 @@ const ProductCreate = () => {
 
     const [values, setValues] = useState(initialState);
     const [subOptions, setSubOptions] = useState([]);
-    const [showSub, setShowSub] = useState(false);
+    //const [showSub, setShowSub] = useState(false);
     const [loading, setLoading] = useState(false)
 
     const { user } = useSelector((state) => ({ ...state }));
@@ -58,17 +58,18 @@ const ProductCreate = () => {
         setValues({ ...values, [e.target.name]: e.target.value })
     }
 
+    //Sub categories were disabled because of unnecessity at this stage of development
     const handleCategoryChange = (e) => {
         e.preventDefault();
         console.log('the choosen category', e.target.value);
         setValues({ ...values, subs: [], category: e.target.value });
-        getCategorySubs(e.target.value)
-            .then(res => {
-                console.log('sub category options', res)
-                setSubOptions(res.data);
-                setShowSub(true)
-            })
-            .catch()
+        // getCategorySubs(e.target.value)
+        //     .then(res => {
+        //         console.log('sub category options', res)
+        //         setSubOptions(res.data);
+        //         setShowSub(true)
+        //     })
+        //     .catch()
     }
 
     return (
@@ -95,7 +96,7 @@ const ProductCreate = () => {
                         values={values}
                         setValues={setValues}
                         subOptions={subOptions}
-                        showSub={showSub}
+                        //showSub={showSub}
                     />
                 </div>
             </div>

@@ -7,11 +7,11 @@ const ProductUpdateForm = ({
     handleChange,
     handleSubmit,
     handleCategoryChange,
-    setValues,
+    //setValues,
     // showSub, 
-    subOptions,
-    arrayOfSubs,
-    setArrayOfSubs,
+    //subOptions,
+    //arrayOfSubs,
+    //setArrayOfSubs,
     selectedCategory,
     categories,
     values
@@ -22,17 +22,19 @@ const ProductUpdateForm = ({
         description,
         fullDescription,
         category,
-        subs,
+        //subs,
         price,
         volume,
         quantity,
-        images } = values;
+        //images 
+    } = values;
 
 
     return (
         <form onSubmit={handleSubmit}>
 
             <div className="form-group">
+                <label className="label text-danger">Название продукта</label>
                 <input
                     type="text"
                     name="title"
@@ -44,6 +46,7 @@ const ProductUpdateForm = ({
             </div>
 
             <div className="form-group">
+                <label className="label text-danger">Описание продукта</label>
                 <input
                     type="text"
                     name="description"
@@ -55,6 +58,7 @@ const ProductUpdateForm = ({
             </div>
 
             <div className="form-group">
+            <label className="label text-danger">Полное описание продукта</label>
                 <input
                     type="text"
                     name="fullDescription"
@@ -66,6 +70,7 @@ const ProductUpdateForm = ({
             </div>
 
             <div className="form-group">
+            <label className="label text-danger">Цена</label>
                 <input
                     type="number"
                     name="price"
@@ -78,6 +83,7 @@ const ProductUpdateForm = ({
 
             <div className="form-group">
                 <h6 className="bg-danger text-center p-3">Внимание: объём тары должен быть указан в миллилитрах</h6>
+                <label className="label text-danger">Объем тары</label>
                 <input
                     type="number"
                     name="volume"
@@ -89,6 +95,7 @@ const ProductUpdateForm = ({
             </div>
 
             <div className="form-group">
+            <label className="label text-danger">Количество</label>
                 <input
                     type="number"
                     name="quantity"
@@ -99,6 +106,7 @@ const ProductUpdateForm = ({
                 />
             </div>
 
+            <label className="label text-danger">Категория</label>
             <h6 className="text-center">Выбрать категорию</h6>
 
             <select
@@ -116,9 +124,11 @@ const ProductUpdateForm = ({
                         </option>)}
             </select>
 
-            <div>
+            {/* <Select> of antd works not in the same way as HTML <select> tag. See comments in ProductUpdate component from line 47 */}
+
+            {/* <div>
                 <h6 className="mt-3 text-center">Выбрать подкатегорию</h6>
-                {/* <Select> of antd works not in the same way as HTML <select> tag. See comments in ProductUpdate component from line 47 */}
+                
                 <Select
                     mode="multiple"
                     style={{ width: "100%" }}
@@ -135,7 +145,7 @@ const ProductUpdateForm = ({
                         </Option>))}
 
                 </Select>
-            </div>
+            </div> */}
 
 
             <button className="btn btn-outline-info mt-4">Отправить</button>
