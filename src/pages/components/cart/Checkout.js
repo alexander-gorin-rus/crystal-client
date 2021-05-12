@@ -11,7 +11,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import ReactQuill from 'react-quill';
 import "react-quill/dist/quill.snow.css"
-import WhatsAppWidget from 'react-whatsapp-widget'
 import 'react-whatsapp-widget/dist/index.css'
 
 
@@ -196,20 +195,20 @@ const Checkout = ({ history }) => {
         <div className="row mb-5">
             <div className="col-md-6">
                 <p className="text-center text-danger mt-3">
-                Во избежание задержек с доставкой товара, просим Вас корректно заполнить адрес для доставки, с указанием номера телефона и именем Заказчика    
+                Во избежание задержек с доставкой товара, просим Вас корректно заполнить адрес Заказчика, с указанием номера телефона и именем Заказчика    
                 </p> 
                 <br />
                 <h4 className="text-center">Адрес Заказчика:</h4>
                 <p className="text-center text-info " style={{fontSize: "0.7rem"}}>В произвольной форме</p>
                 {showAddress()}
                 <hr />
-                <h4 className="text-center">Желаете получить скидку?</h4>
+                {/* <h4 className="text-center">Желаете получить скидку?</h4>
                 <p style={{fontSize: "0.9rem"}} className="text-center text-danger">Пожалуйста, позвоните менеджеру на номер {homePage.map((h, i) => (<h5 className="text-info" key={i}>{h.phone}</h5>))}, либо отправте сообщение на WhatsApp для получения персональной скидки</p>
-                <WhatsAppWidget phoneNumber={homePage.map((h, i) => (<p className="text-info" key={i}>{h.phone}</p>))} message="Компания Crystal рада приветствовать вас" />
+               
                 <br />
                 {showApplyCoupon()}
                 <br />
-                {discountError && <p className="bg-danger text-center">{discountError}</p>}
+                {discountError && <p className="bg-danger text-center">{discountError}</p>} */}
             </div>
             <div className="col-md-6">
                 <h4 className="mt-3 text-center">Мой заказ:</h4>
