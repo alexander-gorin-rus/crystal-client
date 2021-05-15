@@ -2,11 +2,7 @@ import React, { useState, useEffect } from 'react';
 import UserNav from '../components/navigation/UserNav';
 import { getUserOrders } from '../../functions/user';
 import { useSelector, useDispatch } from 'react-redux';
-import { CheckCircleOutlined, CloseCircleOutlined } from '@ant-design/icons';
-import { toast } from 'react-toastify';
 import ShowPaymentInfo from './ShowPaymentInfo';
-import { PDFDownloadLink } from '@react-pdf/renderer';
-import Invoce from './Invoce';
 
 const History = () => {
 
@@ -25,17 +21,6 @@ const History = () => {
             console.log(JSON.stringify(res.data, null, 4));
             setOrders(res.data)
         });
-    }
-
-    const showDownloadLink = (order) => {
-        return (
-            <PDFDownloadLink document={<Invoce order={order} />}
-                fileName="invoce.pdf"
-                className="btn btn-sm btn-block btn-outline-primary"
-            >
-                Скачать документ в PDF формате
-            </PDFDownloadLink>
-        )
     }
 
     const showOrdersInTable = (order) => {
@@ -71,11 +56,6 @@ const History = () => {
                 <p>Информация о заказе</p>
                 <ShowPaymentInfo order={order} />
                 {showOrdersInTable(order)}
-                <div className="row">
-                    <div className="col">
-                        {showDownloadLink(order)}
-                    </div>
-                </div>
             </div>
         ))
 

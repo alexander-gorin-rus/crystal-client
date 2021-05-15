@@ -72,7 +72,7 @@ export const Home = () => {
                             <p className="address" data-aos="fade-zoom-in">{h.address}</p>
                             <p className="email" data-aos="fade-zoom-in">{h.email}</p>
                             <p className="phone" data-aos="fade-zoom-in">{h.phone}</p>
-
+                            <div className="empty"></div>
                 </>
             ))}
         </div>
